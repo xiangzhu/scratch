@@ -1,0 +1,12 @@
+---
+title: "Compare genetic correlation results on the same GWAS from two versions of LDSC data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/ldsc/archive/compare_rg_ldsc_data.Rmd"), echo=FALSE}
+```
+
