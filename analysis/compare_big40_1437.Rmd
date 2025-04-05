@@ -1,0 +1,21 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r,include=FALSE}
+new_file <- "test/IDP_T2_FLAIR_BIANCA_WMH_volume_wbr.regenie.gz"
+old_file <- "1437.txt.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/analysis/compare_big40.Rmd"), echo=FALSE}
+```
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+create_combined_gwas_plots(all_dat, gws_ukbrap, "UKB-RAP", "BIG40", "UKB-RAP")
+create_combined_gwas_plots(all_dat, gws_big40, "UKB-RAP", "BIG40", "BIG40")
+```
