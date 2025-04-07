@@ -14,3 +14,10 @@ old_file <- "0011.txt.gz"
 
 ```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/analysis/compare_big40.Rmd"), echo=FALSE}
 ```
+
+## Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(ukbrap_plot)
+print(big40_plot)
+```
