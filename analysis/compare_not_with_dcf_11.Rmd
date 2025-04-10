@@ -1,0 +1,23 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r,include=FALSE}
+new_file <- "dcf_rickidps_single_20241220_wbr_sn_l_swi_idps_MNI2006a_50th.regenie.gz"
+old_file <- "swi_median_20241220_wbr_sn_l_swi_idps_MNI2006a_50th.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/analysis/compare_not_with_dcf_gwas.Rmd"), echo=FALSE}
+```
+
+## Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(dcf_plot)
+print(not_plot)
+```
