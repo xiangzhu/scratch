@@ -441,7 +441,7 @@ div.tocify {
 <h1 class="title toc-ignore">Check UKB genotyping array QC</h1>
 <h4 class="author">Xiang Zhu, Ph.D.</h4>
 <h4 class="date">First created on 2025-04-04; Last modified on
-2025-06-09</h4>
+2025-06-10</h4>
 
 </div>
 
@@ -470,7 +470,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-06-09
+<strong>Last updated:</strong> 2025-06-10
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -601,15 +601,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreed31f131f3d9c0d1a3b4a96216a9a0ff82080c1c8targetblankd31f131a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreeeef64a9ad51daefecd88a90ae8ab2641877b663etargetblankeef64a9a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/xiangzhu/scratch/tree/d31f131f3d9c0d1a3b4a96216a9a0ff82080c1c8" target="_blank">d31f131</a>
+<a href="https://github.com/xiangzhu/scratch/tree/eef64a9ad51daefecd88a90ae8ab2641877b663e" target="_blank">eef64a9</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreed31f131f3d9c0d1a3b4a96216a9a0ff82080c1c8targetblankd31f131a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreeeef64a9ad51daefecd88a90ae8ab2641877b663etargetblankeef64a9a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -619,7 +619,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/xiangzhu/scratch/tree/d31f131f3d9c0d1a3b4a96216a9a0ff82080c1c8" target="_blank">d31f131</a>.
+<a href="https://github.com/xiangzhu/scratch/tree/eef64a9ad51daefecd88a90ae8ab2641877b663e" target="_blank">eef64a9</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -636,9 +636,6 @@ were generated:
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-
-Unstaged changes:
-    Modified:   analysis/_site.yml
 
 </code></pre>
 <p>
@@ -685,6 +682,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xiangzhu/scratch/441a1738138b288b165267f420ce390991b3af7e/docs/check_ukb_array_qc.html" target="_blank">441a173</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2025-06-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -707,35 +721,503 @@ wflow_publish("analysis/check_ukb_array_qc.Rmd")
 </div>
 </div>
 </div>
+<div id="check-basic-statistics-of-full-qc-results-for-the-same-group"
+class="section level2">
+<h2>Check basic statistics of full QC results for the same group</h2>
+<div id="african-ancestry-afr" class="section level3">
+<h3>African ancestry (afr)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  13234   13310   13330   13323   13344   13366 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0100  0.0653  0.1640  0.1936  0.3056  0.5000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10493   10577   10593   10587   10604   10622 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0100  0.0855  0.1980  0.2162  0.3367  0.4999 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1202  0.3102  0.5213  0.6616 14.9554 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1312  0.3224  0.4861  0.6511 14.9364 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803010  803293  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02341 0.02558 0.02741 0.02885 0.03057 0.07623 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   6683    6683    6683    6683    6683    6683 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001646 0.002693 0.003185 0.004190 0.009876 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   6683    6683    6683    6683    6683    6683 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001646 0.002544 0.003131 0.004040 0.009876 </code></pre>
+</div>
+<div id="admixed-american-ancestry-amr" class="section level3">
+<h3>Admixed American ancestry (amr)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1950    1960    1964    1963    1966    1968 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01016 0.02645 0.07731 0.13997 0.22630 0.50000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1602    1614    1617    1616    1619    1620 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01049 0.02967 0.08721 0.14854 0.24406 0.50000 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.0000  0.2068  0.3587  0.5270 10.4922 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1364  0.3451  0.5208  0.7105  8.9046 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803010  803254  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02304 0.02509 0.02702 0.02929 0.03067 0.06243 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    984     984     984     984     984     984 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001016 0.002033 0.002486 0.004065 0.009146 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    984     984     984     984     984     984 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001016 0.002033 0.002424 0.004065 0.009146 </code></pre>
+</div>
+<div id="centralsouth-asian-ancestry-csa" class="section level3">
+<h3>Central/South Asian ancestry (csa)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  17686   17802   17824   17816   17840   17864 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01000 0.03679 0.11716 0.16518 0.27131 0.50000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  12873   12998   13014   13008   13025   13043 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01000 0.03682 0.12721 0.17081 0.28064 0.50000 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.2578  0.6588  0.9322  1.2918 14.9934 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.2305  0.5396  0.7609  1.0322 14.9156 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803700  803382  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02287 0.02501 0.02674 0.02817 0.02977 0.08034 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   8932    8932    8932    8932    8932    8932 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001343 0.002239 0.002701 0.003471 0.009964 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   8932    8932    8932    8932    8932    8932 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001343 0.002127 0.002572 0.003247 0.009964 </code></pre>
+</div>
+<div id="east-asian-ancestry-eas" class="section level3">
+<h3>East Asian ancestry (eas)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   5448    5478    5488    5485    5494    5502 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01000 0.07297 0.18339 0.20647 0.32787 0.50000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   4516    4550    4557    4555    4562    4569 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01007 0.07512 0.19464 0.21162 0.33507 0.50000 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1133  0.3201  0.4960  0.6732 14.9838 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1827  0.4351  0.6302  0.8747 11.9581 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803010  803244  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02302 0.02503 0.02694 0.02849 0.03027 0.07818 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   2751    2751    2751    2751    2751    2751 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001454 0.002545 0.003163 0.004362 0.009815 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   2751    2751    2751    2751    2751    2751 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001454 0.002545 0.003016 0.003999 0.009815 </code></pre>
+</div>
+<div id="european-ancestry-eur" class="section level3">
+<h3>European ancestry (eur)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 853952  859798  860728  860353  861386  862528 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01000 0.02930 0.07321 0.13856 0.22159 0.50000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 656426  662562  663261  662966  663778  664555 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01001 0.03511 0.08348 0.14486 0.22915 0.49996 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1909  0.5008  1.0260  1.1410 14.9964 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+6.730e-05 1.923e-01 4.799e-01 9.841e-01 1.040e+00 1.494e+01 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803010  803327  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02277 0.02502 0.02722 0.03040 0.03192 0.08438 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 431288  431288  431288  431288  431288  431288 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+5.565e-05 1.380e-03 2.142e-03 2.577e-03 3.221e-03 9.998e-03 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 431288  431288  431288  431288  431288  431288 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0001438 0.0013216 0.0020450 0.0024440 0.0030374 0.0099956 </code></pre>
+</div>
+<div id="middle-eastern-ancestry-mid" class="section level3">
+<h3>Middle Eastern ancestry (mid)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   3164    3182    3188    3186    3190    3194 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01002 0.03266 0.09597 0.15085 0.24324 0.50000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   2246    2267    2270    2269    2273    2275 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01011 0.03578 0.10401 0.15753 0.25595 0.50000 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+ 0.00000  0.09676  0.35847  0.56445  0.78330 14.11560 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1506  0.3722  0.5591  0.7788  4.6044 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803700  803407  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02314 0.02501 0.02692 0.02871 0.03036 0.06757 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1597    1597    1597    1597    1597    1597 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001252 0.001879 0.002527 0.003757 0.009393 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1597    1597    1597    1597    1597    1597 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001252 0.001879 0.002385 0.003131 0.009393 </code></pre>
+</div>
+<div id="unknown-ancestry-nog" class="section level3">
+<h3>Unknown ancestry (nog)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  61478   61884   61958   61929   62010   62098 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01000 0.02665 0.07018 0.13643 0.21939 0.50000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  47997   48436   48494   48470   48535   48598 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01001 0.03210 0.07942 0.14482 0.23342 0.49955 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.2712  0.7749  1.7029  1.9286 14.9996 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.2886  0.7571  1.7075  1.8071 14.8764 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803010  803310  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02286 0.02505 0.02716 0.02994 0.03151 0.08265 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  31049   31049   31049   31049   31049   31049 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.001417 0.002254 0.002723 0.003446 0.009984 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  31049   31049   31049   31049   31049   31049 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+9.662e-05 1.385e-03 2.190e-03 2.635e-03 3.317e-03 9.984e-03 </code></pre>
+</div>
+<div id="white-british-ancestry-wbr" class="section level3">
+<h3>White British ancestry (wbr)</h3>
+<pre><code>AC distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803030  808518  809396  809042  810018  811094 
+
+MAF distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01000 0.02928 0.07314 0.13851 0.22151 0.50000 
+
+AC distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 617103  622883  623545  623267  624032  624762 
+
+MAF distribution for Chr. X variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.01001 0.03507 0.08337 0.14477 0.22873 0.49988 
+
+Unique chromosomes with variants passing autosomal HWE QC:
+ [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;    &quot;10&quot;  
+[11] &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;   &quot;19&quot;   &quot;20&quot;  
+[21] &quot;21&quot;   &quot;22&quot;   &quot;PAR1&quot; &quot;PAR2&quot;
+
+HWE -log10(p) distribution for autosomal variants passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.1897  0.4967  1.0125  1.1252 14.9986 
+
+Unique chromosomes with variants passing Chr. X HWE QC:
+[1] &quot;X&quot;
+
+HWE -log10(p) distribution for Chr. X variants passing QC:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+3.420e-05 1.914e-01 4.745e-01 9.742e-01 1.044e+00 1.498e+01 
+
+Number of variants genotyped per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 803010  803010  803010  803327  803700  803700 
+
+Fraction of missing genotype calls per sample:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02277 0.02502 0.02723 0.03043 0.03197 0.08438 
+
+Number of samples genotyped per autosomal variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 405570  405570  405570  405570  405570  405570 
+
+Fraction of missing genotype calls per autosomal variant passing QC:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+5.671e-05 1.383e-03 2.150e-03 2.587e-03 3.232e-03 9.998e-03 
+
+Number of samples genotyped per Chr. X variant passing QC:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 405570  405570  405570  405570  405570  405570 
+
+Fraction of missing genotype calls per Chr. X variant passing QC:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0001504 0.0013265 0.0020514 0.0024528 0.0030500 0.0099810 </code></pre>
+</div>
+</div>
 <div id="compare-full-and-autosomal-qc-results-for-the-same-group"
 class="section level2">
 <h2>Compare full and autosomal QC results for the same group</h2>
 <div id="compare-retained-participants" class="section level3">
 <h3>Compare retained participants</h3>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">rstudio-server@d648d3ca401a:~$</span> wc <span class="at">-l</span> /mnt/project/Sample-Info/ancestry_array_wgs/<span class="pp">*</span>.txt</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="ex">6684</span> /mnt/project/Sample-Info/ancestry_array_wgs/afr_eid.txt</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>     <span class="ex">985</span> /mnt/project/Sample-Info/ancestry_array_wgs/amr_eid.txt</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="ex">8933</span> /mnt/project/Sample-Info/ancestry_array_wgs/csa_eid.txt</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="ex">2752</span> /mnt/project/Sample-Info/ancestry_array_wgs/eas_eid.txt</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="ex">431289</span> /mnt/project/Sample-Info/ancestry_array_wgs/eur_eid.txt</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="ex">3313</span> /mnt/project/Sample-Info/ancestry_array_wgs/gon_eid.txt</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="ex">1598</span> /mnt/project/Sample-Info/ancestry_array_wgs/mid_eid.txt</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>   <span class="ex">31050</span> /mnt/project/Sample-Info/ancestry_array_wgs/nog_eid.txt</span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  <span class="ex">405571</span> /mnt/project/Sample-Info/ancestry_array_wgs/wbr_eid.txt</span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>    <span class="ex">4972</span> /mnt/project/Sample-Info/ancestry_array_wgs/won_eid.txt</span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  <span class="ex">897147</span> total</span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.id</span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>    <span class="ex">6683</span> /mnt/project/REGENIE/step1_qc/afr_pass.id</span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>     <span class="ex">984</span> /mnt/project/REGENIE/step1_qc/amr_pass.id</span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>    <span class="ex">8932</span> /mnt/project/REGENIE/step1_qc/csa_pass.id</span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>    <span class="ex">2751</span> /mnt/project/REGENIE/step1_qc/eas_pass.id</span>
-<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>  <span class="ex">431288</span> /mnt/project/REGENIE/step1_qc/eur_pass.id</span>
-<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>    <span class="ex">1597</span> /mnt/project/REGENIE/step1_qc/mid_pass.id</span>
-<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>   <span class="ex">31049</span> /mnt/project/REGENIE/step1_qc/nog_pass.id</span>
-<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>  <span class="ex">405570</span> /mnt/project/REGENIE/step1_qc/wbr_pass.id</span>
-<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>  <span class="ex">888854</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">rstudio-server@d648d3ca401a:~$</span> wc <span class="at">-l</span> /mnt/project/Sample-Info/ancestry_array_wgs/<span class="pp">*</span>.txt</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>    <span class="ex">6684</span> /mnt/project/Sample-Info/ancestry_array_wgs/afr_eid.txt</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>     <span class="ex">985</span> /mnt/project/Sample-Info/ancestry_array_wgs/amr_eid.txt</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    <span class="ex">8933</span> /mnt/project/Sample-Info/ancestry_array_wgs/csa_eid.txt</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>    <span class="ex">2752</span> /mnt/project/Sample-Info/ancestry_array_wgs/eas_eid.txt</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="ex">431289</span> /mnt/project/Sample-Info/ancestry_array_wgs/eur_eid.txt</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>    <span class="ex">3313</span> /mnt/project/Sample-Info/ancestry_array_wgs/gon_eid.txt</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>    <span class="ex">1598</span> /mnt/project/Sample-Info/ancestry_array_wgs/mid_eid.txt</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>   <span class="ex">31050</span> /mnt/project/Sample-Info/ancestry_array_wgs/nog_eid.txt</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  <span class="ex">405571</span> /mnt/project/Sample-Info/ancestry_array_wgs/wbr_eid.txt</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>    <span class="ex">4972</span> /mnt/project/Sample-Info/ancestry_array_wgs/won_eid.txt</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>  <span class="ex">897147</span> total</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.id</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>    <span class="ex">6683</span> /mnt/project/REGENIE/step1_qc/afr_pass.id</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>     <span class="ex">984</span> /mnt/project/REGENIE/step1_qc/amr_pass.id</span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>    <span class="ex">8932</span> /mnt/project/REGENIE/step1_qc/csa_pass.id</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>    <span class="ex">2751</span> /mnt/project/REGENIE/step1_qc/eas_pass.id</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>  <span class="ex">431288</span> /mnt/project/REGENIE/step1_qc/eur_pass.id</span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>    <span class="ex">1597</span> /mnt/project/REGENIE/step1_qc/mid_pass.id</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>   <span class="ex">31049</span> /mnt/project/REGENIE/step1_qc/nog_pass.id</span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>  <span class="ex">405570</span> /mnt/project/REGENIE/step1_qc/wbr_pass.id</span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a>  <span class="ex">888854</span> total</span></code></pre></div>
 <pre><code>step1_qc/afr_pass.id and step1_auto_qc/afr_pass.id contain the same set of unique elements (ignoring order): 6683 (step1_qc/afr_pass.id), 6683 (step1_auto_qc/afr_pass.id)</code></pre>
 <pre><code>step1_qc/amr_pass.id and step1_auto_qc/amr_pass.id contain the same set of unique elements (ignoring order): 984 (step1_qc/amr_pass.id), 984 (step1_auto_qc/amr_pass.id)</code></pre>
 <pre><code>step1_qc/csa_pass.id and step1_auto_qc/csa_pass.id contain the same set of unique elements (ignoring order): 8932 (step1_qc/csa_pass.id), 8932 (step1_auto_qc/csa_pass.id)</code></pre>
@@ -747,17 +1229,17 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 </div>
 <div id="compare-retained-variants" class="section level3">
 <h3>Compare retained variants</h3>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.snplist</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="ex">332011</span> /mnt/project/REGENIE/step1_qc/afr_pass.snplist</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="ex">514087</span> /mnt/project/REGENIE/step1_qc/amr_pass.snplist</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="ex">449342</span> /mnt/project/REGENIE/step1_qc/csa_pass.snplist</span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="ex">317847</span> /mnt/project/REGENIE/step1_qc/eas_pass.snplist</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="ex">513395</span> /mnt/project/REGENIE/step1_qc/eur_pass.snplist</span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="ex">482403</span> /mnt/project/REGENIE/step1_qc/mid_pass.snplist</span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="ex">502522</span> /mnt/project/REGENIE/step1_qc/nog_pass.snplist</span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="ex">513739</span> /mnt/project/REGENIE/step1_qc/wbr_pass.snplist</span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a> <span class="ex">3625346</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.snplist</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="ex">332011</span> /mnt/project/REGENIE/step1_qc/afr_pass.snplist</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="ex">514087</span> /mnt/project/REGENIE/step1_qc/amr_pass.snplist</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  <span class="ex">449342</span> /mnt/project/REGENIE/step1_qc/csa_pass.snplist</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>  <span class="ex">317847</span> /mnt/project/REGENIE/step1_qc/eas_pass.snplist</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>  <span class="ex">513395</span> /mnt/project/REGENIE/step1_qc/eur_pass.snplist</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  <span class="ex">482403</span> /mnt/project/REGENIE/step1_qc/mid_pass.snplist</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="ex">502522</span> /mnt/project/REGENIE/step1_qc/nog_pass.snplist</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>  <span class="ex">513739</span> /mnt/project/REGENIE/step1_qc/wbr_pass.snplist</span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a> <span class="ex">3625346</span> total</span></code></pre></div>
 <pre><code>step1_auto_qc/afr_pass.snplist is a subset of step1_qc/afr_pass.snplist: 332011 (step1_qc/afr_pass.snplist), 323060 (step1_auto_qc/afr_pass.snplist)</code></pre>
 <pre><code>step1_auto_qc/amr_pass.snplist is a subset of step1_qc/amr_pass.snplist: 514087 (step1_qc/amr_pass.snplist), 499644 (step1_auto_qc/amr_pass.snplist)</code></pre>
 <pre><code>step1_auto_qc/csa_pass.snplist is a subset of step1_qc/csa_pass.snplist: 449342 (step1_qc/csa_pass.snplist), 436844 (step1_auto_qc/csa_pass.snplist)</code></pre>
@@ -797,28 +1279,28 @@ Number of variants in step1_qc/nog_pass.snplist but not in step1_auto_qc/: 14010
 Number of variants in step1_qc/wbr_pass.snplist but not in step1_auto_qc/: 14573
    23  PAR1  PAR2  &lt;NA&gt; 
 13557   986    30     0 </code></pre>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.prune.in</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="ex">319701</span> /mnt/project/REGENIE/step1_qc/afr_pass.prune.in</span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="ex">493052</span> /mnt/project/REGENIE/step1_qc/amr_pass.prune.in</span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>  <span class="ex">419924</span> /mnt/project/REGENIE/step1_qc/csa_pass.prune.in</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>  <span class="ex">286911</span> /mnt/project/REGENIE/step1_qc/eas_pass.prune.in</span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>  <span class="ex">483723</span> /mnt/project/REGENIE/step1_qc/eur_pass.prune.in</span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>  <span class="ex">465989</span> /mnt/project/REGENIE/step1_qc/mid_pass.prune.in</span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>  <span class="ex">483977</span> /mnt/project/REGENIE/step1_qc/nog_pass.prune.in</span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>  <span class="ex">484002</span> /mnt/project/REGENIE/step1_qc/wbr_pass.prune.in</span>
-<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a> <span class="ex">3437279</span> total</span>
-<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a> </span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.prune.out</span>
-<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a>  <span class="ex">12310</span> /mnt/project/REGENIE/step1_qc/afr_pass.prune.out</span>
-<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a>  <span class="ex">21035</span> /mnt/project/REGENIE/step1_qc/amr_pass.prune.out</span>
-<span id="cb20-15"><a href="#cb20-15" tabindex="-1"></a>  <span class="ex">29418</span> /mnt/project/REGENIE/step1_qc/csa_pass.prune.out</span>
-<span id="cb20-16"><a href="#cb20-16" tabindex="-1"></a>  <span class="ex">30936</span> /mnt/project/REGENIE/step1_qc/eas_pass.prune.out</span>
-<span id="cb20-17"><a href="#cb20-17" tabindex="-1"></a>  <span class="ex">29672</span> /mnt/project/REGENIE/step1_qc/eur_pass.prune.out</span>
-<span id="cb20-18"><a href="#cb20-18" tabindex="-1"></a>  <span class="ex">16414</span> /mnt/project/REGENIE/step1_qc/mid_pass.prune.out</span>
-<span id="cb20-19"><a href="#cb20-19" tabindex="-1"></a>  <span class="ex">18545</span> /mnt/project/REGENIE/step1_qc/nog_pass.prune.out</span>
-<span id="cb20-20"><a href="#cb20-20" tabindex="-1"></a>  <span class="ex">29737</span> /mnt/project/REGENIE/step1_qc/wbr_pass.prune.out</span>
-<span id="cb20-21"><a href="#cb20-21" tabindex="-1"></a> <span class="ex">188067</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.prune.in</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>  <span class="ex">319701</span> /mnt/project/REGENIE/step1_qc/afr_pass.prune.in</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>  <span class="ex">493052</span> /mnt/project/REGENIE/step1_qc/amr_pass.prune.in</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>  <span class="ex">419924</span> /mnt/project/REGENIE/step1_qc/csa_pass.prune.in</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>  <span class="ex">286911</span> /mnt/project/REGENIE/step1_qc/eas_pass.prune.in</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>  <span class="ex">483723</span> /mnt/project/REGENIE/step1_qc/eur_pass.prune.in</span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a>  <span class="ex">465989</span> /mnt/project/REGENIE/step1_qc/mid_pass.prune.in</span>
+<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a>  <span class="ex">483977</span> /mnt/project/REGENIE/step1_qc/nog_pass.prune.in</span>
+<span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a>  <span class="ex">484002</span> /mnt/project/REGENIE/step1_qc/wbr_pass.prune.in</span>
+<span id="cb28-10"><a href="#cb28-10" tabindex="-1"></a> <span class="ex">3437279</span> total</span>
+<span id="cb28-11"><a href="#cb28-11" tabindex="-1"></a> </span>
+<span id="cb28-12"><a href="#cb28-12" tabindex="-1"></a><span class="ex">rstudio-server@abd8db883ba4:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_qc/<span class="pp">*</span>.prune.out</span>
+<span id="cb28-13"><a href="#cb28-13" tabindex="-1"></a>  <span class="ex">12310</span> /mnt/project/REGENIE/step1_qc/afr_pass.prune.out</span>
+<span id="cb28-14"><a href="#cb28-14" tabindex="-1"></a>  <span class="ex">21035</span> /mnt/project/REGENIE/step1_qc/amr_pass.prune.out</span>
+<span id="cb28-15"><a href="#cb28-15" tabindex="-1"></a>  <span class="ex">29418</span> /mnt/project/REGENIE/step1_qc/csa_pass.prune.out</span>
+<span id="cb28-16"><a href="#cb28-16" tabindex="-1"></a>  <span class="ex">30936</span> /mnt/project/REGENIE/step1_qc/eas_pass.prune.out</span>
+<span id="cb28-17"><a href="#cb28-17" tabindex="-1"></a>  <span class="ex">29672</span> /mnt/project/REGENIE/step1_qc/eur_pass.prune.out</span>
+<span id="cb28-18"><a href="#cb28-18" tabindex="-1"></a>  <span class="ex">16414</span> /mnt/project/REGENIE/step1_qc/mid_pass.prune.out</span>
+<span id="cb28-19"><a href="#cb28-19" tabindex="-1"></a>  <span class="ex">18545</span> /mnt/project/REGENIE/step1_qc/nog_pass.prune.out</span>
+<span id="cb28-20"><a href="#cb28-20" tabindex="-1"></a>  <span class="ex">29737</span> /mnt/project/REGENIE/step1_qc/wbr_pass.prune.out</span>
+<span id="cb28-21"><a href="#cb28-21" tabindex="-1"></a> <span class="ex">188067</span> total</span></code></pre></div>
 <pre><code>step1_auto_qc/afr_pass.prune.in is a subset of step1_qc/afr_pass.prune.in: 319701 (step1_qc/afr_pass.prune.in), 311030 (step1_auto_qc/afr_pass.prune.in)</code></pre>
 <pre><code>step1_auto_qc/amr_pass.prune.in is a subset of step1_qc/amr_pass.prune.in: 493052 (step1_qc/amr_pass.prune.in), 479166 (step1_auto_qc/amr_pass.prune.in)</code></pre>
 <pre><code>step1_auto_qc/csa_pass.prune.in is a subset of step1_qc/csa_pass.prune.in: 419924 (step1_qc/csa_pass.prune.in), 408188 (step1_auto_qc/csa_pass.prune.in)</code></pre>
@@ -865,17 +1347,17 @@ class="section level2">
 <h2>Compare two versions of autosomal QC results</h2>
 <div id="compare-retained-variants-1" class="section level3">
 <h3>Compare retained variants</h3>
-<div class="sourceCode" id="cb30"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.id</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>    <span class="ex">6683</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.id</span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>     <span class="ex">984</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.id</span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>    <span class="ex">8932</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.id</span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>    <span class="ex">2751</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.id</span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>  <span class="ex">431288</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.id</span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>    <span class="ex">1597</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.id</span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a>   <span class="ex">31049</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.id</span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a>  <span class="ex">405570</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.id</span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a>  <span class="ex">888854</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.id</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>    <span class="ex">6683</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.id</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>     <span class="ex">984</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.id</span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>    <span class="ex">8932</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.id</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a>    <span class="ex">2751</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.id</span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a>  <span class="ex">431288</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.id</span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>    <span class="ex">1597</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.id</span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a>   <span class="ex">31049</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.id</span>
+<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a>  <span class="ex">405570</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.id</span>
+<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a>  <span class="ex">888854</span> total</span></code></pre></div>
 <pre><code>step1_auto_qc/afr_pass.id is a subset of step1_array_qc/afr_step1_qc_pass.id: 6729 (step1_array_qc/afr_step1_qc_pass.id), 6683 (step1_auto_qc/afr_pass.id)</code></pre>
 <pre><code>step1_auto_qc/amr_pass.id is a subset of step1_array_qc/amr_step1_qc_pass.id: 987 (step1_array_qc/amr_step1_qc_pass.id), 984 (step1_auto_qc/amr_pass.id)</code></pre>
 <pre><code>step1_auto_qc/csa_pass.id is a subset of step1_array_qc/csa_step1_qc_pass.id: 8994 (step1_array_qc/csa_step1_qc_pass.id), 8932 (step1_auto_qc/csa_pass.id)</code></pre>
@@ -888,17 +1370,17 @@ Number unique to step1_auto_qc/eur_pass.id: 8297</code></pre>
 </div>
 <div id="compare-retained-variants-2" class="section level3">
 <h3>Compare retained variants</h3>
-<div class="sourceCode" id="cb38"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.snplist</span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>  <span class="ex">323060</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.snplist</span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>  <span class="ex">499644</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.snplist</span>
-<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>  <span class="ex">436844</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.snplist</span>
-<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a>  <span class="ex">309201</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.snplist</span>
-<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a>  <span class="ex">498831</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.snplist</span>
-<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>  <span class="ex">468174</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.snplist</span>
-<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a>  <span class="ex">488512</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.snplist</span>
-<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a>  <span class="ex">499166</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.snplist</span>
-<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a> <span class="ex">3523432</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.snplist</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>  <span class="ex">323060</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.snplist</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>  <span class="ex">499644</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.snplist</span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>  <span class="ex">436844</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.snplist</span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>  <span class="ex">309201</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.snplist</span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>  <span class="ex">498831</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.snplist</span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>  <span class="ex">468174</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.snplist</span>
+<span id="cb46-8"><a href="#cb46-8" tabindex="-1"></a>  <span class="ex">488512</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.snplist</span>
+<span id="cb46-9"><a href="#cb46-9" tabindex="-1"></a>  <span class="ex">499166</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.snplist</span>
+<span id="cb46-10"><a href="#cb46-10" tabindex="-1"></a> <span class="ex">3523432</span> total</span></code></pre></div>
 <pre><code>Number of elements shared: 322884
 Number unique to step1_array_qc/afr_step1_qc_pass.snplist: 603
 Number unique to step1_auto_qc/afr_pass.snplist: 176</code></pre>
@@ -920,28 +1402,28 @@ Number unique to step1_auto_qc/mid_pass.snplist: 1632</code></pre>
 <pre><code>Number of elements shared: 499025
 Number unique to step1_array_qc/wbr_step1_qc_pass.snplist: 67
 Number unique to step1_auto_qc/wbr_pass.snplist: 141</code></pre>
-<div class="sourceCode" id="cb46"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.prune.in</span>
-<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>  <span class="ex">311030</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.prune.in</span>
-<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>  <span class="ex">479166</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.prune.in</span>
-<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>  <span class="ex">408188</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.prune.in</span>
-<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>  <span class="ex">279028</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.prune.in</span>
-<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>  <span class="ex">470022</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.prune.in</span>
-<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>  <span class="ex">452178</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.prune.in</span>
-<span id="cb46-8"><a href="#cb46-8" tabindex="-1"></a>  <span class="ex">470427</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.prune.in</span>
-<span id="cb46-9"><a href="#cb46-9" tabindex="-1"></a>  <span class="ex">470295</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.prune.in</span>
-<span id="cb46-10"><a href="#cb46-10" tabindex="-1"></a> <span class="ex">3340334</span> total</span>
-<span id="cb46-11"><a href="#cb46-11" tabindex="-1"></a></span>
-<span id="cb46-12"><a href="#cb46-12" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.prune.out</span>
-<span id="cb46-13"><a href="#cb46-13" tabindex="-1"></a>  <span class="ex">12030</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.prune.out</span>
-<span id="cb46-14"><a href="#cb46-14" tabindex="-1"></a>  <span class="ex">20478</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.prune.out</span>
-<span id="cb46-15"><a href="#cb46-15" tabindex="-1"></a>  <span class="ex">28656</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.prune.out</span>
-<span id="cb46-16"><a href="#cb46-16" tabindex="-1"></a>  <span class="ex">30173</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.prune.out</span>
-<span id="cb46-17"><a href="#cb46-17" tabindex="-1"></a>  <span class="ex">28809</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.prune.out</span>
-<span id="cb46-18"><a href="#cb46-18" tabindex="-1"></a>  <span class="ex">15996</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.prune.out</span>
-<span id="cb46-19"><a href="#cb46-19" tabindex="-1"></a>  <span class="ex">18085</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.prune.out</span>
-<span id="cb46-20"><a href="#cb46-20" tabindex="-1"></a>  <span class="ex">28871</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.prune.out</span>
-<span id="cb46-21"><a href="#cb46-21" tabindex="-1"></a> <span class="ex">183098</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.prune.in</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>  <span class="ex">311030</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.prune.in</span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a>  <span class="ex">479166</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.prune.in</span>
+<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a>  <span class="ex">408188</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.prune.in</span>
+<span id="cb54-5"><a href="#cb54-5" tabindex="-1"></a>  <span class="ex">279028</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.prune.in</span>
+<span id="cb54-6"><a href="#cb54-6" tabindex="-1"></a>  <span class="ex">470022</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.prune.in</span>
+<span id="cb54-7"><a href="#cb54-7" tabindex="-1"></a>  <span class="ex">452178</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.prune.in</span>
+<span id="cb54-8"><a href="#cb54-8" tabindex="-1"></a>  <span class="ex">470427</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.prune.in</span>
+<span id="cb54-9"><a href="#cb54-9" tabindex="-1"></a>  <span class="ex">470295</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.prune.in</span>
+<span id="cb54-10"><a href="#cb54-10" tabindex="-1"></a> <span class="ex">3340334</span> total</span>
+<span id="cb54-11"><a href="#cb54-11" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" tabindex="-1"></a><span class="ex">rstudio-server@627acfcbc15f:~$</span> wc <span class="at">-l</span> /mnt/project/REGENIE/step1_auto_qc/<span class="pp">*</span>.prune.out</span>
+<span id="cb54-13"><a href="#cb54-13" tabindex="-1"></a>  <span class="ex">12030</span> /mnt/project/REGENIE/step1_auto_qc/afr_pass.prune.out</span>
+<span id="cb54-14"><a href="#cb54-14" tabindex="-1"></a>  <span class="ex">20478</span> /mnt/project/REGENIE/step1_auto_qc/amr_pass.prune.out</span>
+<span id="cb54-15"><a href="#cb54-15" tabindex="-1"></a>  <span class="ex">28656</span> /mnt/project/REGENIE/step1_auto_qc/csa_pass.prune.out</span>
+<span id="cb54-16"><a href="#cb54-16" tabindex="-1"></a>  <span class="ex">30173</span> /mnt/project/REGENIE/step1_auto_qc/eas_pass.prune.out</span>
+<span id="cb54-17"><a href="#cb54-17" tabindex="-1"></a>  <span class="ex">28809</span> /mnt/project/REGENIE/step1_auto_qc/eur_pass.prune.out</span>
+<span id="cb54-18"><a href="#cb54-18" tabindex="-1"></a>  <span class="ex">15996</span> /mnt/project/REGENIE/step1_auto_qc/mid_pass.prune.out</span>
+<span id="cb54-19"><a href="#cb54-19" tabindex="-1"></a>  <span class="ex">18085</span> /mnt/project/REGENIE/step1_auto_qc/nog_pass.prune.out</span>
+<span id="cb54-20"><a href="#cb54-20" tabindex="-1"></a>  <span class="ex">28871</span> /mnt/project/REGENIE/step1_auto_qc/wbr_pass.prune.out</span>
+<span id="cb54-21"><a href="#cb54-21" tabindex="-1"></a> <span class="ex">183098</span> total</span></code></pre></div>
 <pre><code>Number of elements shared: 310774
 Number unique to step1_array_qc/afr_step1_qc_pass.prune.in: 710
 Number unique to step1_auto_qc/afr_pass.prune.in: 256</code></pre>
@@ -970,83 +1452,83 @@ class="section level2">
 <h2>ARCHIVE: Count participants and variants by ancestries</h2>
 <div id="archive-sample-size" class="section level3">
 <h3>ARCHIVE: Sample size</h3>
-<div class="sourceCode" id="cb54"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.id</span>
-<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>    <span class="ex">6729</span> afr_step1_qc_pass.id</span>
-<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a>     <span class="ex">987</span> amr_step1_qc_pass.id</span>
-<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a>    <span class="ex">8994</span> csa_step1_qc_pass.id</span>
-<span id="cb54-5"><a href="#cb54-5" tabindex="-1"></a>    <span class="ex">2757</span> eas_step1_qc_pass.id</span>
-<span id="cb54-6"><a href="#cb54-6" tabindex="-1"></a>   <span class="ex">25859</span> emb_step1_qc_pass.id</span>
-<span id="cb54-7"><a href="#cb54-7" tabindex="-1"></a>  <span class="ex">425272</span> eur_step1_qc_pass.id</span>
-<span id="cb54-8"><a href="#cb54-8" tabindex="-1"></a>    <span class="ex">1614</span> mid_step1_qc_pass.id</span>
-<span id="cb54-9"><a href="#cb54-9" tabindex="-1"></a>   <span class="ex">39559</span> ung_step1_qc_pass.id</span>
-<span id="cb54-10"><a href="#cb54-10" tabindex="-1"></a>  <span class="ex">407756</span> wbr_step1_qc_pass.id</span>
-<span id="cb54-11"><a href="#cb54-11" tabindex="-1"></a>  <span class="ex">919527</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.id</span>
+<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a>    <span class="ex">6729</span> afr_step1_qc_pass.id</span>
+<span id="cb62-3"><a href="#cb62-3" tabindex="-1"></a>     <span class="ex">987</span> amr_step1_qc_pass.id</span>
+<span id="cb62-4"><a href="#cb62-4" tabindex="-1"></a>    <span class="ex">8994</span> csa_step1_qc_pass.id</span>
+<span id="cb62-5"><a href="#cb62-5" tabindex="-1"></a>    <span class="ex">2757</span> eas_step1_qc_pass.id</span>
+<span id="cb62-6"><a href="#cb62-6" tabindex="-1"></a>   <span class="ex">25859</span> emb_step1_qc_pass.id</span>
+<span id="cb62-7"><a href="#cb62-7" tabindex="-1"></a>  <span class="ex">425272</span> eur_step1_qc_pass.id</span>
+<span id="cb62-8"><a href="#cb62-8" tabindex="-1"></a>    <span class="ex">1614</span> mid_step1_qc_pass.id</span>
+<span id="cb62-9"><a href="#cb62-9" tabindex="-1"></a>   <span class="ex">39559</span> ung_step1_qc_pass.id</span>
+<span id="cb62-10"><a href="#cb62-10" tabindex="-1"></a>  <span class="ex">407756</span> wbr_step1_qc_pass.id</span>
+<span id="cb62-11"><a href="#cb62-11" tabindex="-1"></a>  <span class="ex">919527</span> total</span></code></pre></div>
 <p>Compare with the sample size derived from covariate data (Row 1 =
 header):</p>
-<div class="sourceCode" id="cb55"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/Sample-Info/ancestry$</span> wc <span class="at">-l</span> <span class="pp">*</span>.txt</span>
-<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>     <span class="ex">6730</span> afr_sample_info.txt</span>
-<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a>      <span class="ex">988</span> amr_sample_info.txt</span>
-<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a>     <span class="ex">8995</span> csa_sample_info.txt</span>
-<span id="cb55-5"><a href="#cb55-5" tabindex="-1"></a>     <span class="ex">2758</span> eas_sample_info.txt</span>
-<span id="cb55-6"><a href="#cb55-6" tabindex="-1"></a>    <span class="ex">25860</span> emb_sample_info.txt</span>
-<span id="cb55-7"><a href="#cb55-7" tabindex="-1"></a>   <span class="ex">425273</span> eur_sample_info.txt</span>
-<span id="cb55-8"><a href="#cb55-8" tabindex="-1"></a>     <span class="ex">1615</span> mid_sample_info.txt</span>
-<span id="cb55-9"><a href="#cb55-9" tabindex="-1"></a>    <span class="ex">39560</span> ung_sample_info.txt</span>
-<span id="cb55-10"><a href="#cb55-10" tabindex="-1"></a>   <span class="ex">407757</span> wbr_sample_info.txt</span>
-<span id="cb55-11"><a href="#cb55-11" tabindex="-1"></a>   <span class="ex">919536</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/Sample-Info/ancestry$</span> wc <span class="at">-l</span> <span class="pp">*</span>.txt</span>
+<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a>     <span class="ex">6730</span> afr_sample_info.txt</span>
+<span id="cb63-3"><a href="#cb63-3" tabindex="-1"></a>      <span class="ex">988</span> amr_sample_info.txt</span>
+<span id="cb63-4"><a href="#cb63-4" tabindex="-1"></a>     <span class="ex">8995</span> csa_sample_info.txt</span>
+<span id="cb63-5"><a href="#cb63-5" tabindex="-1"></a>     <span class="ex">2758</span> eas_sample_info.txt</span>
+<span id="cb63-6"><a href="#cb63-6" tabindex="-1"></a>    <span class="ex">25860</span> emb_sample_info.txt</span>
+<span id="cb63-7"><a href="#cb63-7" tabindex="-1"></a>   <span class="ex">425273</span> eur_sample_info.txt</span>
+<span id="cb63-8"><a href="#cb63-8" tabindex="-1"></a>     <span class="ex">1615</span> mid_sample_info.txt</span>
+<span id="cb63-9"><a href="#cb63-9" tabindex="-1"></a>    <span class="ex">39560</span> ung_sample_info.txt</span>
+<span id="cb63-10"><a href="#cb63-10" tabindex="-1"></a>   <span class="ex">407757</span> wbr_sample_info.txt</span>
+<span id="cb63-11"><a href="#cb63-11" tabindex="-1"></a>   <span class="ex">919536</span> total</span></code></pre></div>
 </div>
 <div id="archive-number-of-remaining-variants-before---indep-pairwise"
 class="section level3">
 <h3>ARCHIVE: Number of remaining variants before
 <code>--indep-pairwise</code></h3>
-<div class="sourceCode" id="cb56"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.snplist</span>
-<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>  <span class="ex">323487</span> afr_step1_qc_pass.snplist</span>
-<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a>  <span class="ex">499723</span> amr_step1_qc_pass.snplist</span>
-<span id="cb56-4"><a href="#cb56-4" tabindex="-1"></a>  <span class="ex">436645</span> csa_step1_qc_pass.snplist</span>
-<span id="cb56-5"><a href="#cb56-5" tabindex="-1"></a>  <span class="ex">308889</span> eas_step1_qc_pass.snplist</span>
-<span id="cb56-6"><a href="#cb56-6" tabindex="-1"></a>  <span class="ex">520935</span> emb_step1_qc_pass.snplist</span>
-<span id="cb56-7"><a href="#cb56-7" tabindex="-1"></a>  <span class="ex">500286</span> eur_step1_qc_pass.snplist</span>
-<span id="cb56-8"><a href="#cb56-8" tabindex="-1"></a>  <span class="ex">469540</span> mid_step1_qc_pass.snplist</span>
-<span id="cb56-9"><a href="#cb56-9" tabindex="-1"></a>  <span class="ex">469534</span> ung_step1_qc_pass.snplist</span>
-<span id="cb56-10"><a href="#cb56-10" tabindex="-1"></a>  <span class="ex">499092</span> wbr_step1_qc_pass.snplist</span>
-<span id="cb56-11"><a href="#cb56-11" tabindex="-1"></a> <span class="ex">4028131</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.snplist</span>
+<span id="cb64-2"><a href="#cb64-2" tabindex="-1"></a>  <span class="ex">323487</span> afr_step1_qc_pass.snplist</span>
+<span id="cb64-3"><a href="#cb64-3" tabindex="-1"></a>  <span class="ex">499723</span> amr_step1_qc_pass.snplist</span>
+<span id="cb64-4"><a href="#cb64-4" tabindex="-1"></a>  <span class="ex">436645</span> csa_step1_qc_pass.snplist</span>
+<span id="cb64-5"><a href="#cb64-5" tabindex="-1"></a>  <span class="ex">308889</span> eas_step1_qc_pass.snplist</span>
+<span id="cb64-6"><a href="#cb64-6" tabindex="-1"></a>  <span class="ex">520935</span> emb_step1_qc_pass.snplist</span>
+<span id="cb64-7"><a href="#cb64-7" tabindex="-1"></a>  <span class="ex">500286</span> eur_step1_qc_pass.snplist</span>
+<span id="cb64-8"><a href="#cb64-8" tabindex="-1"></a>  <span class="ex">469540</span> mid_step1_qc_pass.snplist</span>
+<span id="cb64-9"><a href="#cb64-9" tabindex="-1"></a>  <span class="ex">469534</span> ung_step1_qc_pass.snplist</span>
+<span id="cb64-10"><a href="#cb64-10" tabindex="-1"></a>  <span class="ex">499092</span> wbr_step1_qc_pass.snplist</span>
+<span id="cb64-11"><a href="#cb64-11" tabindex="-1"></a> <span class="ex">4028131</span> total</span></code></pre></div>
 </div>
 <div id="archive-number-of-remaining-variants-after---indep-pairwise"
 class="section level3">
 <h3>ARCHIVE: Number of remaining variants after
 <code>--indep-pairwise</code></h3>
-<div class="sourceCode" id="cb57"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.prune.in</span>
-<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>  <span class="ex">311484</span> afr_step1_qc_pass.prune.in</span>
-<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a>  <span class="ex">479379</span> amr_step1_qc_pass.prune.in</span>
-<span id="cb57-4"><a href="#cb57-4" tabindex="-1"></a>  <span class="ex">408173</span> csa_step1_qc_pass.prune.in</span>
-<span id="cb57-5"><a href="#cb57-5" tabindex="-1"></a>  <span class="ex">278987</span> eas_step1_qc_pass.prune.in</span>
-<span id="cb57-6"><a href="#cb57-6" tabindex="-1"></a>  <span class="ex">491595</span> emb_step1_qc_pass.prune.in</span>
-<span id="cb57-7"><a href="#cb57-7" tabindex="-1"></a>  <span class="ex">471363</span> eur_step1_qc_pass.prune.in</span>
-<span id="cb57-8"><a href="#cb57-8" tabindex="-1"></a>  <span class="ex">453471</span> mid_step1_qc_pass.prune.in</span>
-<span id="cb57-9"><a href="#cb57-9" tabindex="-1"></a>  <span class="ex">452504</span> ung_step1_qc_pass.prune.in</span>
-<span id="cb57-10"><a href="#cb57-10" tabindex="-1"></a>  <span class="ex">470357</span> wbr_step1_qc_pass.prune.in</span>
-<span id="cb57-11"><a href="#cb57-11" tabindex="-1"></a> <span class="ex">3817313</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.prune.in</span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a>  <span class="ex">311484</span> afr_step1_qc_pass.prune.in</span>
+<span id="cb65-3"><a href="#cb65-3" tabindex="-1"></a>  <span class="ex">479379</span> amr_step1_qc_pass.prune.in</span>
+<span id="cb65-4"><a href="#cb65-4" tabindex="-1"></a>  <span class="ex">408173</span> csa_step1_qc_pass.prune.in</span>
+<span id="cb65-5"><a href="#cb65-5" tabindex="-1"></a>  <span class="ex">278987</span> eas_step1_qc_pass.prune.in</span>
+<span id="cb65-6"><a href="#cb65-6" tabindex="-1"></a>  <span class="ex">491595</span> emb_step1_qc_pass.prune.in</span>
+<span id="cb65-7"><a href="#cb65-7" tabindex="-1"></a>  <span class="ex">471363</span> eur_step1_qc_pass.prune.in</span>
+<span id="cb65-8"><a href="#cb65-8" tabindex="-1"></a>  <span class="ex">453471</span> mid_step1_qc_pass.prune.in</span>
+<span id="cb65-9"><a href="#cb65-9" tabindex="-1"></a>  <span class="ex">452504</span> ung_step1_qc_pass.prune.in</span>
+<span id="cb65-10"><a href="#cb65-10" tabindex="-1"></a>  <span class="ex">470357</span> wbr_step1_qc_pass.prune.in</span>
+<span id="cb65-11"><a href="#cb65-11" tabindex="-1"></a> <span class="ex">3817313</span> total</span></code></pre></div>
 </div>
 <div id="archive-number-of-removed-variants-after---indep-pairwise"
 class="section level3">
 <h3>ARCHIVE: Number of removed variants after
 <code>--indep-pairwise</code></h3>
-<div class="sourceCode" id="cb58"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.prune.out</span>
-<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>  <span class="ex">12003</span> afr_step1_qc_pass.prune.out</span>
-<span id="cb58-3"><a href="#cb58-3" tabindex="-1"></a>  <span class="ex">20344</span> amr_step1_qc_pass.prune.out</span>
-<span id="cb58-4"><a href="#cb58-4" tabindex="-1"></a>  <span class="ex">28472</span> csa_step1_qc_pass.prune.out</span>
-<span id="cb58-5"><a href="#cb58-5" tabindex="-1"></a>  <span class="ex">29902</span> eas_step1_qc_pass.prune.out</span>
-<span id="cb58-6"><a href="#cb58-6" tabindex="-1"></a>  <span class="ex">29340</span> emb_step1_qc_pass.prune.out</span>
-<span id="cb58-7"><a href="#cb58-7" tabindex="-1"></a>  <span class="ex">28923</span> eur_step1_qc_pass.prune.out</span>
-<span id="cb58-8"><a href="#cb58-8" tabindex="-1"></a>  <span class="ex">16069</span> mid_step1_qc_pass.prune.out</span>
-<span id="cb58-9"><a href="#cb58-9" tabindex="-1"></a>  <span class="ex">17030</span> ung_step1_qc_pass.prune.out</span>
-<span id="cb58-10"><a href="#cb58-10" tabindex="-1"></a>  <span class="ex">28735</span> wbr_step1_qc_pass.prune.out</span>
-<span id="cb58-11"><a href="#cb58-11" tabindex="-1"></a> <span class="ex">210818</span> total</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a><span class="ex">rstudio-server@cf9eb1b336ac:/mnt/project/REGENIE/step1_array_qc$</span> wc <span class="at">-l</span> <span class="pp">*</span>.prune.out</span>
+<span id="cb66-2"><a href="#cb66-2" tabindex="-1"></a>  <span class="ex">12003</span> afr_step1_qc_pass.prune.out</span>
+<span id="cb66-3"><a href="#cb66-3" tabindex="-1"></a>  <span class="ex">20344</span> amr_step1_qc_pass.prune.out</span>
+<span id="cb66-4"><a href="#cb66-4" tabindex="-1"></a>  <span class="ex">28472</span> csa_step1_qc_pass.prune.out</span>
+<span id="cb66-5"><a href="#cb66-5" tabindex="-1"></a>  <span class="ex">29902</span> eas_step1_qc_pass.prune.out</span>
+<span id="cb66-6"><a href="#cb66-6" tabindex="-1"></a>  <span class="ex">29340</span> emb_step1_qc_pass.prune.out</span>
+<span id="cb66-7"><a href="#cb66-7" tabindex="-1"></a>  <span class="ex">28923</span> eur_step1_qc_pass.prune.out</span>
+<span id="cb66-8"><a href="#cb66-8" tabindex="-1"></a>  <span class="ex">16069</span> mid_step1_qc_pass.prune.out</span>
+<span id="cb66-9"><a href="#cb66-9" tabindex="-1"></a>  <span class="ex">17030</span> ung_step1_qc_pass.prune.out</span>
+<span id="cb66-10"><a href="#cb66-10" tabindex="-1"></a>  <span class="ex">28735</span> wbr_step1_qc_pass.prune.out</span>
+<span id="cb66-11"><a href="#cb66-11" tabindex="-1"></a> <span class="ex">210818</span> total</span></code></pre></div>
 </div>
 </div>
 <div
@@ -1054,125 +1536,125 @@ id="archive-compare-two-versions-of-qc-results-for-white-british-subset"
 class="section level2">
 <h2>ARCHIVE: Compare two versions of QC results for White British
 subset</h2>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>new_name <span class="ot">&lt;-</span> <span class="st">&quot;wbr_step1_qc_pass&quot;</span></span>
-<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a>old_name <span class="ot">&lt;-</span> <span class="st">&quot;regenie_step1_snps_qc_pass&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a>new_name <span class="ot">&lt;-</span> <span class="st">&quot;wbr_step1_qc_pass&quot;</span></span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>old_name <span class="ot">&lt;-</span> <span class="st">&quot;regenie_step1_snps_qc_pass&quot;</span></span></code></pre></div>
 <div id="archive-compare-retained-participants" class="section level3">
 <h3>ARCHIVE: Compare retained participants</h3>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>new_id <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="fu">paste0</span>(new_path, new_name, <span class="st">&quot;.id&quot;</span>))</span>
-<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a>old_id <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="fu">paste0</span>(old_path, old_name, <span class="st">&quot;.id&quot;</span>))</span>
-<span id="cb60-3"><a href="#cb60-3" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" tabindex="-1"></a><span class="fu">all</span>(new_id<span class="sc">$</span>V1 <span class="sc">==</span> new_id<span class="sc">$</span>V2) <span class="co"># [1] TRUE</span></span>
-<span id="cb60-5"><a href="#cb60-5" tabindex="-1"></a><span class="fu">all</span>(old_id<span class="sc">$</span>V1 <span class="sc">==</span> old_id<span class="sc">$</span>V2) <span class="co"># [1] TRUE</span></span>
-<span id="cb60-6"><a href="#cb60-6" tabindex="-1"></a></span>
-<span id="cb60-7"><a href="#cb60-7" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">dim</span>(new_id)[<span class="dv">1</span>], <span class="fu">dim</span>(old_id)[<span class="dv">1</span>])</span>
-<span id="cb60-8"><a href="#cb60-8" tabindex="-1"></a><span class="co"># [1] 407756 408304</span></span>
-<span id="cb60-9"><a href="#cb60-9" tabindex="-1"></a></span>
-<span id="cb60-10"><a href="#cb60-10" tabindex="-1"></a><span class="fu">table</span>(new_id<span class="sc">$</span>V1 <span class="sc">%in%</span> old_id<span class="sc">$</span>V1)</span>
-<span id="cb60-11"><a href="#cb60-11" tabindex="-1"></a><span class="co"># FALSE   TRUE </span></span>
-<span id="cb60-12"><a href="#cb60-12" tabindex="-1"></a><span class="co">#   279 407477</span></span>
-<span id="cb60-13"><a href="#cb60-13" tabindex="-1"></a>   </span>
-<span id="cb60-14"><a href="#cb60-14" tabindex="-1"></a><span class="fu">table</span>(old_id<span class="sc">$</span>V1 <span class="sc">%in%</span> new_id<span class="sc">$</span>V1)</span>
-<span id="cb60-15"><a href="#cb60-15" tabindex="-1"></a><span class="co"># FALSE   TRUE </span></span>
-<span id="cb60-16"><a href="#cb60-16" tabindex="-1"></a><span class="co">#   827 407477</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a>new_id <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="fu">paste0</span>(new_path, new_name, <span class="st">&quot;.id&quot;</span>))</span>
+<span id="cb68-2"><a href="#cb68-2" tabindex="-1"></a>old_id <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="fu">paste0</span>(old_path, old_name, <span class="st">&quot;.id&quot;</span>))</span>
+<span id="cb68-3"><a href="#cb68-3" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" tabindex="-1"></a><span class="fu">all</span>(new_id<span class="sc">$</span>V1 <span class="sc">==</span> new_id<span class="sc">$</span>V2) <span class="co"># [1] TRUE</span></span>
+<span id="cb68-5"><a href="#cb68-5" tabindex="-1"></a><span class="fu">all</span>(old_id<span class="sc">$</span>V1 <span class="sc">==</span> old_id<span class="sc">$</span>V2) <span class="co"># [1] TRUE</span></span>
+<span id="cb68-6"><a href="#cb68-6" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="#cb68-7" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">dim</span>(new_id)[<span class="dv">1</span>], <span class="fu">dim</span>(old_id)[<span class="dv">1</span>])</span>
+<span id="cb68-8"><a href="#cb68-8" tabindex="-1"></a><span class="co"># [1] 407756 408304</span></span>
+<span id="cb68-9"><a href="#cb68-9" tabindex="-1"></a></span>
+<span id="cb68-10"><a href="#cb68-10" tabindex="-1"></a><span class="fu">table</span>(new_id<span class="sc">$</span>V1 <span class="sc">%in%</span> old_id<span class="sc">$</span>V1)</span>
+<span id="cb68-11"><a href="#cb68-11" tabindex="-1"></a><span class="co"># FALSE   TRUE </span></span>
+<span id="cb68-12"><a href="#cb68-12" tabindex="-1"></a><span class="co">#   279 407477</span></span>
+<span id="cb68-13"><a href="#cb68-13" tabindex="-1"></a>   </span>
+<span id="cb68-14"><a href="#cb68-14" tabindex="-1"></a><span class="fu">table</span>(old_id<span class="sc">$</span>V1 <span class="sc">%in%</span> new_id<span class="sc">$</span>V1)</span>
+<span id="cb68-15"><a href="#cb68-15" tabindex="-1"></a><span class="co"># FALSE   TRUE </span></span>
+<span id="cb68-16"><a href="#cb68-16" tabindex="-1"></a><span class="co">#   827 407477</span></span></code></pre></div>
 </div>
 <div id="archive-compare-remaining-variants-before---indep-pairwise"
 class="section level3">
 <h3>ARCHIVE: Compare remaining variants before
 <code>--indep-pairwise</code></h3>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>new_snplist <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(new_path, new_name, <span class="st">&quot;.snplist&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
-<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>old_snplist <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(old_path, old_name, <span class="st">&quot;.snplist&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
-<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a></span>
-<span id="cb61-4"><a href="#cb61-4" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">length</span>(new_snplist), <span class="fu">length</span>(old_snplist))</span>
-<span id="cb61-5"><a href="#cb61-5" tabindex="-1"></a><span class="co"># [1] 499092 498798</span></span>
-<span id="cb61-6"><a href="#cb61-6" tabindex="-1"></a></span>
-<span id="cb61-7"><a href="#cb61-7" tabindex="-1"></a><span class="fu">table</span>(new_snplist <span class="sc">%in%</span> old_snplist)</span>
-<span id="cb61-8"><a href="#cb61-8" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
-<span id="cb61-9"><a href="#cb61-9" tabindex="-1"></a><span class="co">#   357 498735</span></span>
-<span id="cb61-10"><a href="#cb61-10" tabindex="-1"></a></span>
-<span id="cb61-11"><a href="#cb61-11" tabindex="-1"></a><span class="fu">table</span>(old_snplist <span class="sc">%in%</span> new_snplist)</span>
-<span id="cb61-12"><a href="#cb61-12" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
-<span id="cb61-13"><a href="#cb61-13" tabindex="-1"></a><span class="co">#    63 498735</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>new_snplist <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(new_path, new_name, <span class="st">&quot;.snplist&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>old_snplist <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(old_path, old_name, <span class="st">&quot;.snplist&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
+<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">length</span>(new_snplist), <span class="fu">length</span>(old_snplist))</span>
+<span id="cb69-5"><a href="#cb69-5" tabindex="-1"></a><span class="co"># [1] 499092 498798</span></span>
+<span id="cb69-6"><a href="#cb69-6" tabindex="-1"></a></span>
+<span id="cb69-7"><a href="#cb69-7" tabindex="-1"></a><span class="fu">table</span>(new_snplist <span class="sc">%in%</span> old_snplist)</span>
+<span id="cb69-8"><a href="#cb69-8" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
+<span id="cb69-9"><a href="#cb69-9" tabindex="-1"></a><span class="co">#   357 498735</span></span>
+<span id="cb69-10"><a href="#cb69-10" tabindex="-1"></a></span>
+<span id="cb69-11"><a href="#cb69-11" tabindex="-1"></a><span class="fu">table</span>(old_snplist <span class="sc">%in%</span> new_snplist)</span>
+<span id="cb69-12"><a href="#cb69-12" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
+<span id="cb69-13"><a href="#cb69-13" tabindex="-1"></a><span class="co">#    63 498735</span></span></code></pre></div>
 </div>
 <div id="archive-compare-remaining-variants-after---indep-pairwise"
 class="section level3">
 <h3>ARCHIVE: Compare remaining variants after
 <code>--indep-pairwise</code></h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a>new_prunein <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(new_path, new_name, <span class="st">&quot;.prune.in&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
-<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a>old_prunein <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(old_path, old_name, <span class="st">&quot;.prune.in&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
-<span id="cb62-3"><a href="#cb62-3" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="#cb62-4" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">length</span>(new_prunein), <span class="fu">length</span>(old_prunein))</span>
-<span id="cb62-5"><a href="#cb62-5" tabindex="-1"></a><span class="co"># [1] 470357 470110</span></span>
-<span id="cb62-6"><a href="#cb62-6" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="#cb62-7" tabindex="-1"></a><span class="fu">table</span>(new_prunein <span class="sc">%in%</span> old_prunein)</span>
-<span id="cb62-8"><a href="#cb62-8" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
-<span id="cb62-9"><a href="#cb62-9" tabindex="-1"></a><span class="co">#   419 469938</span></span>
-<span id="cb62-10"><a href="#cb62-10" tabindex="-1"></a></span>
-<span id="cb62-11"><a href="#cb62-11" tabindex="-1"></a><span class="fu">table</span>(old_prunein <span class="sc">%in%</span> new_prunein)</span>
-<span id="cb62-12"><a href="#cb62-12" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
-<span id="cb62-13"><a href="#cb62-13" tabindex="-1"></a><span class="co">#   172 469938</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a>new_prunein <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(new_path, new_name, <span class="st">&quot;.prune.in&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
+<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a>old_prunein <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="fu">paste0</span>(old_path, old_name, <span class="st">&quot;.prune.in&quot;</span>), <span class="at">what =</span> <span class="fu">character</span>())</span>
+<span id="cb70-3"><a href="#cb70-3" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">length</span>(new_prunein), <span class="fu">length</span>(old_prunein))</span>
+<span id="cb70-5"><a href="#cb70-5" tabindex="-1"></a><span class="co"># [1] 470357 470110</span></span>
+<span id="cb70-6"><a href="#cb70-6" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" tabindex="-1"></a><span class="fu">table</span>(new_prunein <span class="sc">%in%</span> old_prunein)</span>
+<span id="cb70-8"><a href="#cb70-8" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
+<span id="cb70-9"><a href="#cb70-9" tabindex="-1"></a><span class="co">#   419 469938</span></span>
+<span id="cb70-10"><a href="#cb70-10" tabindex="-1"></a></span>
+<span id="cb70-11"><a href="#cb70-11" tabindex="-1"></a><span class="fu">table</span>(old_prunein <span class="sc">%in%</span> new_prunein)</span>
+<span id="cb70-12"><a href="#cb70-12" tabindex="-1"></a><span class="co"># FALSE   TRUE</span></span>
+<span id="cb70-13"><a href="#cb70-13" tabindex="-1"></a><span class="co">#   172 469938</span></span></code></pre></div>
 </div>
 </div>
 <div id="archive-confirm-input-data-format-for---keep-in-plink2"
 class="section level2">
 <h2>ARCHIVE: Confirm input data format for <code>--keep</code> in
 PLINK2</h2>
-<div class="sourceCode" id="cb63"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="ex">rstudio-server@17fd232b8d65:$</span> wc <span class="at">-l</span> ukb_wb_sample_info.txt </span>
-<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a><span class="ex">408309</span> ukb_wb_sample_info.txt</span>
-<span id="cb63-3"><a href="#cb63-3" tabindex="-1"></a></span>
-<span id="cb63-4"><a href="#cb63-4" tabindex="-1"></a><span class="ex">rstudio-server@17fd232b8d65:$</span> head <span class="at">-n</span> 1 ukb_wb_sample_info.txt </span>
-<span id="cb63-5"><a href="#cb63-5" tabindex="-1"></a><span class="ex">FID</span>     IID     age     sex     pc1     pc2     pc3     pc4     pc5     pc6     pc7     pc8     pc9     pc10    pc11    pc12    pc13    pc14    pc15    pc16    pc17    pc18    pc19    pc20    array</span>
-<span id="cb63-6"><a href="#cb63-6" tabindex="-1"></a></span>
-<span id="cb63-7"><a href="#cb63-7" tabindex="-1"></a><span class="ex">rstudio-server@17fd232b8d65:$</span> more regenie_step1_snps_qc/regenie_step1_snps_qc_pass.log </span>
-<span id="cb63-8"><a href="#cb63-8" tabindex="-1"></a><span class="ex">PLINK</span> v2.00a3.1LM 64-bit Intel <span class="er">(</span><span class="ex">19</span> May 2022<span class="kw">)</span></span>
-<span id="cb63-9"><a href="#cb63-9" tabindex="-1"></a><span class="ex">Options</span> in effect:</span>
-<span id="cb63-10"><a href="#cb63-10" tabindex="-1"></a>  <span class="ex">--autosome</span></span>
-<span id="cb63-11"><a href="#cb63-11" tabindex="-1"></a>  <span class="ex">--bfile</span> ukb_c1-22_GRCh38_full_analysis_set_plus_decoy_hla_merged</span>
-<span id="cb63-12"><a href="#cb63-12" tabindex="-1"></a>  <span class="ex">--exclude</span> range regenie_step1_exclude_region.bed</span>
-<span id="cb63-13"><a href="#cb63-13" tabindex="-1"></a>  <span class="ex">--geno</span> 0.01</span>
-<span id="cb63-14"><a href="#cb63-14" tabindex="-1"></a>  <span class="ex">--hwe</span> 1e-15</span>
-<span id="cb63-15"><a href="#cb63-15" tabindex="-1"></a>  <span class="ex">--indep-pairwise</span> 1000 100 0.9</span>
-<span id="cb63-16"><a href="#cb63-16" tabindex="-1"></a>  <span class="ex">--keep</span> ukb_wb_sample_info.txt</span>
-<span id="cb63-17"><a href="#cb63-17" tabindex="-1"></a>  <span class="ex">--maf</span> 0.01</span>
-<span id="cb63-18"><a href="#cb63-18" tabindex="-1"></a>  <span class="ex">--mind</span> 0.1</span>
-<span id="cb63-19"><a href="#cb63-19" tabindex="-1"></a>  <span class="ex">--no-id-header</span></span>
-<span id="cb63-20"><a href="#cb63-20" tabindex="-1"></a>  <span class="ex">--out</span> regenie_step1_snps_qc_pass</span>
-<span id="cb63-21"><a href="#cb63-21" tabindex="-1"></a>  <span class="ex">--write-samples</span></span>
-<span id="cb63-22"><a href="#cb63-22" tabindex="-1"></a>  <span class="ex">--write-snplist</span></span>
-<span id="cb63-23"><a href="#cb63-23" tabindex="-1"></a></span>
-<span id="cb63-24"><a href="#cb63-24" tabindex="-1"></a><span class="ex">Hostname:</span> job-GvG0gbQJBF91fBQb2KbfXxk1</span>
-<span id="cb63-25"><a href="#cb63-25" tabindex="-1"></a><span class="ex">Working</span> directory: /home/dnanexus/out/out</span>
-<span id="cb63-26"><a href="#cb63-26" tabindex="-1"></a><span class="ex">Start</span> time: Tue Oct 22 20:38:09 2024</span>
-<span id="cb63-27"><a href="#cb63-27" tabindex="-1"></a></span>
-<span id="cb63-28"><a href="#cb63-28" tabindex="-1"></a><span class="ex">Random</span> number seed: 1729629489</span>
-<span id="cb63-29"><a href="#cb63-29" tabindex="-1"></a><span class="ex">70807</span> MiB RAM detected<span class="kw">;</span> <span class="ex">reserving</span> 35403 MiB for main workspace.</span>
-<span id="cb63-30"><a href="#cb63-30" tabindex="-1"></a><span class="ex">Using</span> up to 36 threads <span class="er">(</span><span class="ex">change</span> this with <span class="at">--threads</span><span class="kw">)</span><span class="bu">.</span></span>
-<span id="cb63-31"><a href="#cb63-31" tabindex="-1"></a><span class="ex">488377</span> samples <span class="er">(</span><span class="ex">264586</span> females, 223330 males, 461 ambiguous<span class="kw">;</span> <span class="ex">488377</span> founders<span class="kw">)</span></span>
-<span id="cb63-32"><a href="#cb63-32" tabindex="-1"></a><span class="ex">loaded</span> from ukb_c1-22_GRCh38_full_analysis_set_plus_decoy_hla_merged.fam.</span>
-<span id="cb63-33"><a href="#cb63-33" tabindex="-1"></a><span class="ex">782630</span> variants loaded from</span>
-<span id="cb63-34"><a href="#cb63-34" tabindex="-1"></a><span class="ex">ukb_c1-22_GRCh38_full_analysis_set_plus_decoy_hla_merged.bim.</span></span>
-<span id="cb63-35"><a href="#cb63-35" tabindex="-1"></a><span class="ex">1</span> categorical phenotype loaded <span class="er">(</span><span class="ex">488377</span> values<span class="kw">)</span><span class="bu">.</span></span>
-<span id="cb63-36"><a href="#cb63-36" tabindex="-1"></a><span class="ex">--exclude</span> bed1: 42692 variants excluded.</span>
-<span id="cb63-37"><a href="#cb63-37" tabindex="-1"></a><span class="ex">--keep:</span> 408308 samples remaining.</span>
-<span id="cb63-38"><a href="#cb63-38" tabindex="-1"></a><span class="ex">Calculating</span> sample missingness rates... done.</span>
-<span id="cb63-39"><a href="#cb63-39" tabindex="-1"></a><span class="ex">4</span> samples removed due to missing genotype data <span class="er">(</span><span class="ex">--mind</span><span class="kw">)</span><span class="bu">.</span></span>
-<span id="cb63-40"><a href="#cb63-40" tabindex="-1"></a><span class="ex">IDs</span> written to regenie_step1_snps_qc_pass.mindrem.id .</span>
-<span id="cb63-41"><a href="#cb63-41" tabindex="-1"></a><span class="ex">408304</span> samples <span class="er">(</span><span class="ex">220700</span> females, 187604 males<span class="kw">;</span> <span class="ex">408304</span> founders<span class="kw">)</span> <span class="ex">remaining</span> after</span>
-<span id="cb63-42"><a href="#cb63-42" tabindex="-1"></a><span class="ex">main</span> filters.</span>
-<span id="cb63-43"><a href="#cb63-43" tabindex="-1"></a><span class="ex">408304</span> categorical phenotype values remaining after main filters.</span>
-<span id="cb63-44"><a href="#cb63-44" tabindex="-1"></a><span class="ex">--write-samples:</span> Sample IDs written to regenie_step1_snps_qc_pass.id .</span>
-<span id="cb63-45"><a href="#cb63-45" tabindex="-1"></a><span class="ex">Calculating</span> allele frequencies... done.</span>
-<span id="cb63-46"><a href="#cb63-46" tabindex="-1"></a><span class="ex">--geno:</span> 134857 variants removed due to missing genotype data.</span>
-<span id="cb63-47"><a href="#cb63-47" tabindex="-1"></a><span class="ex">--hwe:</span> 21020 variants removed due to Hardy-Weinberg exact test <span class="er">(</span><span class="ex">founders</span> only<span class="kw">)</span><span class="bu">.</span></span>
-<span id="cb63-48"><a href="#cb63-48" tabindex="-1"></a><span class="ex">85263</span> variants removed due to allele frequency threshold<span class="er">(</span><span class="ex">s</span><span class="kw">)</span></span>
-<span id="cb63-49"><a href="#cb63-49" tabindex="-1"></a><span class="kw">(</span><span class="ex">--maf/--max-maf/--mac/--max-mac</span><span class="kw">)</span><span class="bu">.</span></span>
-<span id="cb63-50"><a href="#cb63-50" tabindex="-1"></a><span class="ex">498798</span> variants remaining after main filters.</span>
-<span id="cb63-51"><a href="#cb63-51" tabindex="-1"></a><span class="ex">--write-snplist:</span> Variant IDs written to regenie_step1_snps_qc_pass.snplist .</span>
-<span id="cb63-52"><a href="#cb63-52" tabindex="-1"></a><span class="ex">--indep-pairwise</span> <span class="er">(</span><span class="ex">14</span> compute threads<span class="kw">)</span><span class="bu">:</span> 28688/498798 variants removed.</span>
-<span id="cb63-53"><a href="#cb63-53" tabindex="-1"></a><span class="ex">Variant</span> lists written to regenie_step1_snps_qc_pass.prune.in and</span>
-<span id="cb63-54"><a href="#cb63-54" tabindex="-1"></a><span class="ex">regenie_step1_snps_qc_pass.prune.out</span> .</span>
-<span id="cb63-55"><a href="#cb63-55" tabindex="-1"></a></span>
-<span id="cb63-56"><a href="#cb63-56" tabindex="-1"></a><span class="ex">End</span> time: Tue Oct 22 20:59:08 2024</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="ex">rstudio-server@17fd232b8d65:$</span> wc <span class="at">-l</span> ukb_wb_sample_info.txt </span>
+<span id="cb71-2"><a href="#cb71-2" tabindex="-1"></a><span class="ex">408309</span> ukb_wb_sample_info.txt</span>
+<span id="cb71-3"><a href="#cb71-3" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" tabindex="-1"></a><span class="ex">rstudio-server@17fd232b8d65:$</span> head <span class="at">-n</span> 1 ukb_wb_sample_info.txt </span>
+<span id="cb71-5"><a href="#cb71-5" tabindex="-1"></a><span class="ex">FID</span>     IID     age     sex     pc1     pc2     pc3     pc4     pc5     pc6     pc7     pc8     pc9     pc10    pc11    pc12    pc13    pc14    pc15    pc16    pc17    pc18    pc19    pc20    array</span>
+<span id="cb71-6"><a href="#cb71-6" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" tabindex="-1"></a><span class="ex">rstudio-server@17fd232b8d65:$</span> more regenie_step1_snps_qc/regenie_step1_snps_qc_pass.log </span>
+<span id="cb71-8"><a href="#cb71-8" tabindex="-1"></a><span class="ex">PLINK</span> v2.00a3.1LM 64-bit Intel <span class="er">(</span><span class="ex">19</span> May 2022<span class="kw">)</span></span>
+<span id="cb71-9"><a href="#cb71-9" tabindex="-1"></a><span class="ex">Options</span> in effect:</span>
+<span id="cb71-10"><a href="#cb71-10" tabindex="-1"></a>  <span class="ex">--autosome</span></span>
+<span id="cb71-11"><a href="#cb71-11" tabindex="-1"></a>  <span class="ex">--bfile</span> ukb_c1-22_GRCh38_full_analysis_set_plus_decoy_hla_merged</span>
+<span id="cb71-12"><a href="#cb71-12" tabindex="-1"></a>  <span class="ex">--exclude</span> range regenie_step1_exclude_region.bed</span>
+<span id="cb71-13"><a href="#cb71-13" tabindex="-1"></a>  <span class="ex">--geno</span> 0.01</span>
+<span id="cb71-14"><a href="#cb71-14" tabindex="-1"></a>  <span class="ex">--hwe</span> 1e-15</span>
+<span id="cb71-15"><a href="#cb71-15" tabindex="-1"></a>  <span class="ex">--indep-pairwise</span> 1000 100 0.9</span>
+<span id="cb71-16"><a href="#cb71-16" tabindex="-1"></a>  <span class="ex">--keep</span> ukb_wb_sample_info.txt</span>
+<span id="cb71-17"><a href="#cb71-17" tabindex="-1"></a>  <span class="ex">--maf</span> 0.01</span>
+<span id="cb71-18"><a href="#cb71-18" tabindex="-1"></a>  <span class="ex">--mind</span> 0.1</span>
+<span id="cb71-19"><a href="#cb71-19" tabindex="-1"></a>  <span class="ex">--no-id-header</span></span>
+<span id="cb71-20"><a href="#cb71-20" tabindex="-1"></a>  <span class="ex">--out</span> regenie_step1_snps_qc_pass</span>
+<span id="cb71-21"><a href="#cb71-21" tabindex="-1"></a>  <span class="ex">--write-samples</span></span>
+<span id="cb71-22"><a href="#cb71-22" tabindex="-1"></a>  <span class="ex">--write-snplist</span></span>
+<span id="cb71-23"><a href="#cb71-23" tabindex="-1"></a></span>
+<span id="cb71-24"><a href="#cb71-24" tabindex="-1"></a><span class="ex">Hostname:</span> job-GvG0gbQJBF91fBQb2KbfXxk1</span>
+<span id="cb71-25"><a href="#cb71-25" tabindex="-1"></a><span class="ex">Working</span> directory: /home/dnanexus/out/out</span>
+<span id="cb71-26"><a href="#cb71-26" tabindex="-1"></a><span class="ex">Start</span> time: Tue Oct 22 20:38:09 2024</span>
+<span id="cb71-27"><a href="#cb71-27" tabindex="-1"></a></span>
+<span id="cb71-28"><a href="#cb71-28" tabindex="-1"></a><span class="ex">Random</span> number seed: 1729629489</span>
+<span id="cb71-29"><a href="#cb71-29" tabindex="-1"></a><span class="ex">70807</span> MiB RAM detected<span class="kw">;</span> <span class="ex">reserving</span> 35403 MiB for main workspace.</span>
+<span id="cb71-30"><a href="#cb71-30" tabindex="-1"></a><span class="ex">Using</span> up to 36 threads <span class="er">(</span><span class="ex">change</span> this with <span class="at">--threads</span><span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb71-31"><a href="#cb71-31" tabindex="-1"></a><span class="ex">488377</span> samples <span class="er">(</span><span class="ex">264586</span> females, 223330 males, 461 ambiguous<span class="kw">;</span> <span class="ex">488377</span> founders<span class="kw">)</span></span>
+<span id="cb71-32"><a href="#cb71-32" tabindex="-1"></a><span class="ex">loaded</span> from ukb_c1-22_GRCh38_full_analysis_set_plus_decoy_hla_merged.fam.</span>
+<span id="cb71-33"><a href="#cb71-33" tabindex="-1"></a><span class="ex">782630</span> variants loaded from</span>
+<span id="cb71-34"><a href="#cb71-34" tabindex="-1"></a><span class="ex">ukb_c1-22_GRCh38_full_analysis_set_plus_decoy_hla_merged.bim.</span></span>
+<span id="cb71-35"><a href="#cb71-35" tabindex="-1"></a><span class="ex">1</span> categorical phenotype loaded <span class="er">(</span><span class="ex">488377</span> values<span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb71-36"><a href="#cb71-36" tabindex="-1"></a><span class="ex">--exclude</span> bed1: 42692 variants excluded.</span>
+<span id="cb71-37"><a href="#cb71-37" tabindex="-1"></a><span class="ex">--keep:</span> 408308 samples remaining.</span>
+<span id="cb71-38"><a href="#cb71-38" tabindex="-1"></a><span class="ex">Calculating</span> sample missingness rates... done.</span>
+<span id="cb71-39"><a href="#cb71-39" tabindex="-1"></a><span class="ex">4</span> samples removed due to missing genotype data <span class="er">(</span><span class="ex">--mind</span><span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb71-40"><a href="#cb71-40" tabindex="-1"></a><span class="ex">IDs</span> written to regenie_step1_snps_qc_pass.mindrem.id .</span>
+<span id="cb71-41"><a href="#cb71-41" tabindex="-1"></a><span class="ex">408304</span> samples <span class="er">(</span><span class="ex">220700</span> females, 187604 males<span class="kw">;</span> <span class="ex">408304</span> founders<span class="kw">)</span> <span class="ex">remaining</span> after</span>
+<span id="cb71-42"><a href="#cb71-42" tabindex="-1"></a><span class="ex">main</span> filters.</span>
+<span id="cb71-43"><a href="#cb71-43" tabindex="-1"></a><span class="ex">408304</span> categorical phenotype values remaining after main filters.</span>
+<span id="cb71-44"><a href="#cb71-44" tabindex="-1"></a><span class="ex">--write-samples:</span> Sample IDs written to regenie_step1_snps_qc_pass.id .</span>
+<span id="cb71-45"><a href="#cb71-45" tabindex="-1"></a><span class="ex">Calculating</span> allele frequencies... done.</span>
+<span id="cb71-46"><a href="#cb71-46" tabindex="-1"></a><span class="ex">--geno:</span> 134857 variants removed due to missing genotype data.</span>
+<span id="cb71-47"><a href="#cb71-47" tabindex="-1"></a><span class="ex">--hwe:</span> 21020 variants removed due to Hardy-Weinberg exact test <span class="er">(</span><span class="ex">founders</span> only<span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb71-48"><a href="#cb71-48" tabindex="-1"></a><span class="ex">85263</span> variants removed due to allele frequency threshold<span class="er">(</span><span class="ex">s</span><span class="kw">)</span></span>
+<span id="cb71-49"><a href="#cb71-49" tabindex="-1"></a><span class="kw">(</span><span class="ex">--maf/--max-maf/--mac/--max-mac</span><span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb71-50"><a href="#cb71-50" tabindex="-1"></a><span class="ex">498798</span> variants remaining after main filters.</span>
+<span id="cb71-51"><a href="#cb71-51" tabindex="-1"></a><span class="ex">--write-snplist:</span> Variant IDs written to regenie_step1_snps_qc_pass.snplist .</span>
+<span id="cb71-52"><a href="#cb71-52" tabindex="-1"></a><span class="ex">--indep-pairwise</span> <span class="er">(</span><span class="ex">14</span> compute threads<span class="kw">)</span><span class="bu">:</span> 28688/498798 variants removed.</span>
+<span id="cb71-53"><a href="#cb71-53" tabindex="-1"></a><span class="ex">Variant</span> lists written to regenie_step1_snps_qc_pass.prune.in and</span>
+<span id="cb71-54"><a href="#cb71-54" tabindex="-1"></a><span class="ex">regenie_step1_snps_qc_pass.prune.out</span> .</span>
+<span id="cb71-55"><a href="#cb71-55" tabindex="-1"></a></span>
+<span id="cb71-56"><a href="#cb71-56" tabindex="-1"></a><span class="ex">End</span> time: Tue Oct 22 20:59:08 2024</span></code></pre></div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1181,7 +1663,7 @@ Session information
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 4.5.0 (2025-04-11)
 Platform: aarch64-apple-darwin20
 Running under: macOS Sequoia 15.5
