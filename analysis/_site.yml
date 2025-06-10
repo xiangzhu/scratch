@@ -9,8 +9,8 @@ navbar:
     href: license.html
 output:
   workflowr::wflow_html:
-    toc: no
-    toc_float: no
+    toc: yes
+    toc_float: yes
     theme: flatly
     highlight: pygments
     anchor_sections: false
