@@ -7,5 +7,54 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r, echo=FALSE}
+rm(list = ls())
+
+suppressPackageStartupMessages({
+  library(data.table)
+  library(xzTools)
+})
+
+sam_path <- "/Users/xiangzhu/Documents/1-Projects/ukb/regenie/"
+var_path <- "/Users/xiangzhu/Documents/1-Projects/ukb/gen/"
+```
+
+## African ancestry (`r pop_id = "afr"; pop_id`)
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
+```
+
+## Admixed American ancestry (`r pop_id = "amr"; pop_id`)
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
+```
+
+## Central/South Asian ancestry (`r pop_id = "csa"; pop_id`)
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
+```
+
+## East Asian ancestry (`r pop_id = "eas"; pop_id`)
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
+```
+
+## European ancestry (`r pop_id = "eur"; pop_id`)
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
+```
+
+## Middle Eastern ancestry (`r pop_id = "mid"; pop_id`)
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
+```
+
+## Unknown ancestry (`r pop_id = "nog"; pop_id`)
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
+```
+
+## White British ancestry (`r pop_id = "wbr"; pop_id`)
+
 ```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/prep-data/check_wgs_qc.Rmd"), echo=FALSE}
 ```
