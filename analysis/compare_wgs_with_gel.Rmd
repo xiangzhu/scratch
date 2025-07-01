@@ -8,17 +8,60 @@ editor_options:
 ---
 
 ```{r,include=FALSE}
-new_file <- "/Users/xiangzhu/Downloads/tmp/step1_app_step2_sak/hfpef_aba_single_20250201_wbr_seg34_step2_aba_hfpef.regenie.gz"
 old_file <- "/Users/xiangzhu/Documents/1-Projects/hfpef/regenie/single_20250201_wbr/hfpef_aba_single_20250201_wbr_aba_hfpef.regenie.gz"
 my_range <- c(9, 35000001, 70000001)
 ```
 
-## Summary of comparison
+## Step 1 SAK + Step 2 SAK + WGS PGEN
+
+```{r, include=FALSE}
+new_file <- "/Users/xiangzhu/Downloads/tmp/step1_sak_step2_sak/hfpef_aba_single_20250201_wbr_seg34_step2_aba_hfpef.regenie.gz"
+```
+
+### Summary of comparison
 
 ```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/docs/compare_two_step2.Rmd"), echo=FALSE}
 ```
 
-## Visualization of comparison
+### Visualization of comparison
+
+```{r, fig.align='center',echo=FALSE}
+for (p in plot_ls) {
+  print(p)
+}
+```
+
+## Step 1 App + Step 2 SAK + WGS PGEN
+
+```{r, include=FALSE}
+new_file <- "/Users/xiangzhu/Downloads/tmp/step1_app_step2_sak/hfpef_aba_single_20250201_wbr_seg34_step2_aba_hfpef.regenie.gz"
+```
+
+### Summary of comparison
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/docs/compare_two_step2.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.align='center',echo=FALSE}
+for (p in plot_ls) {
+  print(p)
+}
+```
+
+## Step 1 App + Step 2 APP + WGS BGEN
+
+```{r, include=FALSE}
+new_file <- "/Users/xiangzhu/Downloads/tmp/step1_app_step2_app/hfpef_aba_single_20250201_wbr_seg34_step2_aba_hfpef.regenie.gz"
+```
+
+### Summary of comparison
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/docs/compare_two_step2.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
 
 ```{r, fig.align='center',echo=FALSE}
 for (p in plot_ls) {
