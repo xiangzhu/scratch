@@ -1,0 +1,48 @@
+---
+title: "Compare GWAS results on the same data from two versions of software"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Segment 34
+
+```{r, include=FALSE}
+old_file <- "/Users/xiangzhu/Downloads/tmp/step1_app_step2_sak/hfpef_aba_single_20250201_wbr_seg34_step2_aba_hfpef.regenie.gz"
+new_file <- "/Users/xiangzhu/Downloads/tmp/step1_sak_step2_sak/hfpef_aba_single_20250201_wbr_seg34_step2_aba_hfpef.regenie.gz"
+```
+
+### Summary of comparison
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/docs/compare_two_step2.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.align='center',echo=FALSE}
+for (p in plot_ls) {
+  print(p)
+}
+```
+
+## Segment 69
+
+```{r, include=FALSE}
+old_file <- "/Users/xiangzhu/Downloads/tmp/step1_app_step2_sak/hfpef_aba_single_20250201_wbr_cX_step2_aba_hfpef.regenie.gz"
+new_file <- "/Users/xiangzhu/Downloads/tmp/step1_sak_step2_sak/hfpef_aba_single_20250201_wbr_seg69_step2_aba_hfpef.regenie.gz"
+```
+
+### Summary of comparison
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/docs/compare_two_step2.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.align='center',echo=FALSE}
+for (p in plot_ls) {
+  print(p)
+}
+```
