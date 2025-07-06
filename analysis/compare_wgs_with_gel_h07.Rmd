@@ -1,0 +1,23 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r,include=FALSE}
+new_file <- "hfpef_mri_single_20250401_eur_LAVI.regenie.gz"
+old_file <- "hfpef_mri_single_20250201_wbr_LAVI.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/hfpef/analysis/compare_gel_wgs.Rmd"), echo=FALSE}
+```
+
+## Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(ukbwgs_plot)
+print(ukbgel_plot)
+```
