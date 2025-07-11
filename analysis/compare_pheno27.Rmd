@@ -7,17 +7,40 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r,include=FALSE}
-new_file <- "single_20250201_wbr/hfpef_mri_single_20250201_wbr_WT_global.regenie.gz"
+```{r, include=FALSE}
+new_path <- "/Users/xiangzhu/Documents/1-Projects/hfpef/regenie/"
+old_path <- "/Users/xiangzhu/Documents/3-Resources/SUMSTATS/cmr2023/"
 old_file <- "ukb_phase1to3_heart_may_2022_pheno27.fastGWA"
 ```
 
-```{r child=file.path(Sys.getenv("HOME"),"GitHub/hfpef/analysis/compare_zhao2023.Rmd"), echo=FALSE}
+## UKB-WGS
+
+```{r, include=FALSE}
+new_file <- "single_20250401_eur/hfpef_mri_single_20250401_eur_WT_global.regenie.gz"
 ```
 
-## Visualization of comparison
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/hfpef/analysis/compare_previous_gwas.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
 
 ```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
-print(ukbrap_plot)
-print(gcst_plot)
+print(new_plot)
+print(old_plot)
+```
+
+## UKB-GEL
+
+```{r, include=FALSE}
+new_file <- "single_20250201_wbr/hfpef_mri_single_20250201_wbr_WT_global.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/hfpef/analysis/compare_previous_gwas.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(new_plot)
+print(old_plot)
 ```
