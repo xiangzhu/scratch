@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Xiang Zhu, Ph.D." />
+
+
+<title>Compare GWAS results on the same trait from two versions of input data files</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">scratch</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Compare GWAS results on the same trait from
+two versions of input data files</h1>
+<h4 class="author">Xiang Zhu, Ph.D.</h4>
+<h4 class="date">First created on 2025-04-04; Last modified on
+2025-07-11</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2025-07-11
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>scratch/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20250402code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20250402)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20250402code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20250402)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreed8c7840d7fb0cefaf216fd8c34581effe3fa12f5targetblankd8c7840a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/xiangzhu/scratch/tree/d8c7840d7fb0cefaf216fd8c34581effe3fa12f5" target="_blank">d8c7840</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreed8c7840d7fb0cefaf216fd8c34581effe3fa12f5targetblankd8c7840a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/xiangzhu/scratch/tree/d8c7840d7fb0cefaf216fd8c34581effe3fa12f5" target="_blank">d8c7840</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/compare_6ejqwn.Rmd</code>) and
+HTML (<code>docs/compare_6ejqwn.html</code>) files. If you’ve configured
+a remote Git repository (see <code>?wflow_git_remote</code>), click on
+the hyperlinks in the table below to view the files as they were in that
+past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xiangzhu/scratch/blob/d8c7840d7fb0cefaf216fd8c34581effe3fa12f5/analysis/compare_6ejqwn.Rmd" target="_blank">d8c7840</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2025-07-11
+</td>
+<td>
+wflow_publish("analysis/compare_6ejqwn.Rmd")
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="ukb-wgs" class="section level2">
+<h2>UKB-WGS</h2>
+<div id="overview-of-two-gwas-for-comparison" class="section level3">
+<h3>Overview of two GWAS for comparison</h3>
+<pre><code>Number of rows in the new GWAS:  83080061 </code></pre>
+<pre><code>Number of rows in the old GWAS:  8246567 </code></pre>
+<pre><code>Number of genome-wide significant variants in the new GWAS:  2 </code></pre>
+<pre><code>Number of genome-wide significant variants in the old GWAS:  1 </code></pre>
+<pre><code>Number of GWAS loci in the new GWAS:  2 </code></pre>
+<pre><code>Number of GWAS loci in the old GWAS:  1 </code></pre>
+<pre><code>Relaxed genome-wide significant threshold:  4.30103 </code></pre>
+<pre><code>Number of rows in the old GWAS after liftOver:  8233973 </code></pre>
+<pre><code>Number of rows after joining two data frames:  8384147 </code></pre>
+<pre><code>Number of rows with the same alleles:  4077367 </code></pre>
+<pre><code>Number of rows with flipped alleles:  4074333 </code></pre>
+<pre><code>Number of rows with inconsistent alleles:  232447 </code></pre>
+<pre><code>Number of rows after removing inconsistent alleles:  8151700 </code></pre>
+</div>
+<div id="comparison-across-all-variants" class="section level3">
+<h3>Comparison across all variants</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.05615811 , 95% CI = [ 0.05547378 ,  0.0568424 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error   t value Pr(&gt;|t|)
+(Intercept) -0.003734603 7.190878e-05 -51.93529        0
+x            0.160382470 9.986986e-04 160.59147        0
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.00218736 , 95% CI = [ 0.00150088 ,  0.00287383 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+               Estimate   Std. Error     t value     Pr(&gt;|t|)
+(Intercept) 0.418942246 0.0002002404 2092.195995 0.000000e+00
+x           0.002029748 0.0003250106    6.245175 4.233453e-10
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.06283655 , 95% CI = [ 0.06215275 ,  0.06352028 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+                Estimate   Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -0.001819487 0.0003408363  -5.338302 9.382384e-08
+x            0.061202895 0.0003404682 179.760984 0.000000e+00</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-new-gwas"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from new
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.33526654 , 95% CI = [ 0.18221567 ,  0.47245536 ]
+
+Regression coefficients for new_BETA (new ~ old):
+             Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 0.3673761 0.06663997 5.512850 1.601676e-07
+x           4.0718827 0.95685202 4.255499 3.753487e-05
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.0813285 , 95% CI = [ -0.08277815 ,  0.24114085 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate Std. Error    t value      Pr(&gt;|t|)
+(Intercept) 4.79007432 0.05243765 91.3479968 1.061897e-128
+x           0.08487186 0.08697850  0.9757798  3.308214e-01
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.20196479 , 95% CI = [ 0.04028171 ,  0.35334127 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+             Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 2.2362847  0.3463826 6.456111 1.564201e-09
+x           0.9001707  0.3650380 2.465964 1.484708e-02</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-old-gwas"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from old
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.50275346 , 95% CI = [ 0.42962786 ,  0.56932811 ]
+
+Regression coefficients for new_BETA (new ~ old):
+               Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -0.04494182 0.00913338 -4.920612 1.221491e-06
+x            0.41244580 0.03380767 12.199770 1.088543e-29
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  -0.05551287 , 95% CI = [ -0.14801853 ,  0.03795574 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+               Estimate Std. Error   t value    Pr(&gt;|t|)
+(Intercept)  0.71470082 0.24818251  2.879739 0.004174294
+x           -0.06142918 0.05267257 -1.166246 0.244146690
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.28545817 , 95% CI = [ 0.19744307 ,  0.36890797 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -0.24868504 0.05052802 -4.921725 1.214924e-06
+x            0.07402404 0.01184805  6.247784 9.835811e-10</code></pre>
+</div>
+<div id="overlap-of-genome-wide-significant-variants-between-two-gwas"
+class="section level3">
+<h3>Overlap of genome-wide significant variants between two GWAS</h3>
+<pre><code>                     New GWAS p &lt; cutoff New GWAS p &gt;= cutoff
+Old GWAS p &lt; cutoff                    0                  442
+Old GWAS p &gt;= cutoff                 145              8151113</code></pre>
+<pre><code>
+    Fisher&#39;s Exact Test for Count Data
+
+data:  contingency_table
+p-value = 1
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+   0.000 470.682
+sample estimates:
+odds ratio 
+         0 </code></pre>
+</div>
+<div id="visualization-of-comparison" class="section level3">
+<h3>Visualization of comparison</h3>
+<p><img src="figure/compare_6ejqwn.Rmd/unnamed-chunk-4-1.png" width="1440" style="display: block; margin: auto;" /><img src="figure/compare_6ejqwn.Rmd/unnamed-chunk-4-2.png" width="1440" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ukb-gel" class="section level2">
+<h2>UKB-GEL</h2>
+<div id="overview-of-two-gwas-for-comparison-1" class="section level3">
+<h3>Overview of two GWAS for comparison</h3>
+<pre><code>Number of rows in the new GWAS:  56339021 </code></pre>
+<pre><code>Number of rows in the old GWAS:  8246567 </code></pre>
+<pre><code>Number of genome-wide significant variants in the new GWAS:  0 </code></pre>
+<pre><code>Number of genome-wide significant variants in the old GWAS:  1 </code></pre>
+<pre><code>Number of GWAS loci in the new GWAS:  0 </code></pre>
+<pre><code>Number of GWAS loci in the old GWAS:  1 </code></pre>
+<pre><code>Relaxed genome-wide significant threshold:  4.30103 </code></pre>
+<pre><code>Number of rows in the old GWAS after liftOver:  8233973 </code></pre>
+<pre><code>Number of rows after joining two data frames:  8060537 </code></pre>
+<pre><code>Number of rows with the same alleles:  4004386 </code></pre>
+<pre><code>Number of rows with flipped alleles:  4001372 </code></pre>
+<pre><code>Number of rows with inconsistent alleles:  54779 </code></pre>
+<pre><code>Number of rows after removing inconsistent alleles:  8005758 </code></pre>
+</div>
+<div id="comparison-across-all-variants-1" class="section level3">
+<h3>Comparison across all variants</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.05815219 , 95% CI = [ 0.0574618 ,  0.05884252 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error   t value Pr(&gt;|t|)
+(Intercept) -0.003941074 7.472214e-05 -52.74306        0
+x            0.171499849 1.040545e-03 164.81731        0
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.00202114 , 95% CI = [ 0.00132844 ,  0.00271384 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+               Estimate   Std. Error     t value     Pr(&gt;|t|)
+(Intercept) 0.420976783 0.0002055929 2047.623624 0.000000e+00
+x           0.001906524 0.0003333830    5.718718 1.073347e-08
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.06369227 , 95% CI = [ 0.06300235 ,  0.06438214 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate   Std. Error    t value    Pr(&gt;|t|)
+(Intercept) -0.00102122 0.0003454049  -2.956587 0.003110657
+x            0.06226704 0.0003448162 180.580403 0.000000000</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-new-gwas-1"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from new
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.55835627 , 95% CI = [ 0.44772974 ,  0.65214739 ]
+
+Regression coefficients for new_BETA (new ~ old):
+             Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 0.1462503 0.05099071 2.868174 4.636394e-03
+x           5.8513617 0.65719755 8.903505 6.757362e-16
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  -0.12434325 , 95% CI = [ -0.26694785 ,  0.02359001 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate Std. Error    t value      Pr(&gt;|t|)
+(Intercept)  4.6834587 0.04007925 116.854949 5.323603e-168
+x           -0.1123303 0.06775979  -1.657772  9.915496e-02
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.44205596 , 95% CI = [ 0.31510105 ,  0.55346847 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+            Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 1.113553  0.2744004 4.058132 7.444388e-05
+x           1.786658  0.2740511 6.519434 7.283843e-10</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-old-gwas-1"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from old
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.47957423 , 95% CI = [ 0.40439092 ,  0.54831949 ]
+
+Regression coefficients for new_BETA (new ~ old):
+               Estimate  Std. Error  t value     Pr(&gt;|t|)
+(Intercept) -0.03191732 0.009184921 -3.47497 5.615840e-04
+x            0.38975662 0.033998449 11.46395 8.412066e-27
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  -0.02559233 , 95% CI = [ -0.11858134 ,  0.06784169 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+               Estimate Std. Error   t value   Pr(&gt;|t|)
+(Intercept)  0.53803649 0.25000878  2.152070 0.03193517
+x           -0.02849358 0.05306016 -0.537005 0.59153557
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.32773764 , 95% CI = [ 0.2418589 ,  0.40852171 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -0.18845790 0.04898180 -3.847509 1.369776e-04
+x            0.08357498 0.01148548  7.276577 1.584382e-12</code></pre>
+</div>
+<div id="overlap-of-genome-wide-significant-variants-between-two-gwas-1"
+class="section level3">
+<h3>Overlap of genome-wide significant variants between two GWAS</h3>
+<pre><code>                     New GWAS p &lt; cutoff New GWAS p &gt;= cutoff
+Old GWAS p &lt; cutoff                    0                  442
+Old GWAS p &gt;= cutoff                 177              8005139</code></pre>
+<pre><code>
+    Fisher&#39;s Exact Test for Count Data
+
+data:  contingency_table
+p-value = 1
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+   0.0000 380.3729
+sample estimates:
+odds ratio 
+         0 </code></pre>
+</div>
+<div id="visualization-of-comparison-1" class="section level3">
+<h3>Visualization of comparison</h3>
+<p><img src="figure/compare_6ejqwn.Rmd/unnamed-chunk-7-1.png" width="1440" style="display: block; margin: auto;" /><img src="figure/compare_6ejqwn.Rmd/unnamed-chunk-7-2.png" width="1440" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>R version 4.5.1 (2025-06-13)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sequoia 15.5
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/Los_Angeles
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] MungeSumstats_1.16.0 xzTools_0.0.0.9000   patchwork_1.3.1     
+[4] ggplot2_3.5.2        dplyr_1.1.4          data.table_1.17.8   
+[7] workflowr_1.7.1     
+
+loaded via a namespace (and not attached):
+  [1] DBI_1.2.3                   bitops_1.0-9               
+  [3] rlang_1.1.6                 magrittr_2.0.3             
+  [5] git2r_0.36.2                matrixStats_1.5.0          
+  [7] compiler_4.5.1              RSQLite_2.4.1              
+  [9] getPass_0.2-4               mgcv_1.9-3                 
+ [11] GenomicFeatures_1.60.0      png_0.1-8                  
+ [13] callr_3.7.6                 vctrs_0.6.5                
+ [15] stringr_1.5.1               pkgconfig_2.0.3            
+ [17] crayon_1.5.3                fastmap_1.2.0              
+ [19] XVector_0.48.0              labeling_0.4.3             
+ [21] Rsamtools_2.24.0            promises_1.3.3             
+ [23] rmarkdown_2.29              UCSC.utils_1.4.0           
+ [25] ps_1.9.1                    bit_4.6.0                  
+ [27] xfun_0.52                   cachem_1.1.0               
+ [29] GenomeInfoDb_1.44.0         jsonlite_2.0.0             
+ [31] blob_1.2.4                  later_1.4.2                
+ [33] DelayedArray_0.34.1         BiocParallel_1.42.1        
+ [35] parallel_4.5.1              R6_2.6.1                   
+ [37] VariantAnnotation_1.54.1    bslib_0.9.0                
+ [39] stringi_1.8.7               RColorBrewer_1.1-3         
+ [41] rtracklayer_1.68.0          GenomicRanges_1.60.0       
+ [43] jquerylib_0.1.4             Rcpp_1.1.0                 
+ [45] SummarizedExperiment_1.38.1 knitr_1.50                 
+ [47] R.utils_2.13.0              IRanges_2.42.0             
+ [49] httpuv_1.6.16               Matrix_1.7-3               
+ [51] splines_4.5.1               tidyselect_1.2.1           
+ [53] rstudioapi_0.17.1           abind_1.4-8                
+ [55] yaml_2.3.10                 codetools_0.2-20           
+ [57] curl_6.4.0                  processx_3.8.6             
+ [59] lattice_0.22-7              tibble_3.3.0               
+ [61] Biobase_2.68.0              withr_3.0.2                
+ [63] KEGGREST_1.48.1             evaluate_1.0.4             
+ [65] Biostrings_2.76.0           pillar_1.11.0              
+ [67] MatrixGenerics_1.20.0       whisker_0.4.1              
+ [69] stats4_4.5.1                ieugwasr_1.0.4             
+ [71] generics_0.1.4              rprojroot_2.0.4            
+ [73] RCurl_1.98-1.17             S4Vectors_0.46.0           
+ [75] scales_1.4.0                glue_1.8.0                 
+ [77] tools_4.5.1                 BiocIO_1.18.0              
+ [79] BSgenome_1.76.0             GenomicAlignments_1.44.0   
+ [81] fs_1.6.6                    XML_3.99-0.18              
+ [83] grid_4.5.1                  AnnotationDbi_1.70.0       
+ [85] nlme_3.1-168                GenomeInfoDbData_1.2.14    
+ [87] restfulr_0.0.16             cli_3.6.5                  
+ [89] S4Arrays_1.8.1              gtable_0.3.6               
+ [91] R.methodsS3_1.8.2           sass_0.4.10                
+ [93] digest_0.6.37               BiocGenerics_0.54.0        
+ [95] SparseArray_1.8.0           rjson_0.2.23               
+ [97] farver_2.1.2                memoise_2.0.1              
+ [99] htmltools_0.5.8.1           R.oo_1.27.1                
+[101] lifecycle_1.0.4             httr_1.4.7                 
+[103] bit64_4.6.0-1              </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
