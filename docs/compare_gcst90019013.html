@@ -30,6 +30,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
@@ -321,6 +324,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -328,6 +394,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -366,7 +442,7 @@ $(document).ready(function () {
 two versions of input data files</h1>
 <h4 class="author">Xiang Zhu, Ph.D.</h4>
 <h4 class="date">First created on 2025-04-04; Last modified on
-2025-04-14</h4>
+2025-07-11</h4>
 
 </div>
 
@@ -395,7 +471,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-04-14
+<strong>Last updated:</strong> 2025-07-11
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -526,15 +602,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtree57caca7b01929fe14516f53ec236e04f1d53f6cetargetblank57caca7a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreed41b3d47653b118885462b87468441f77344c2ebtargetblankd41b3d4a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/xiangzhu/scratch/tree/57caca7b01929fe14516f53ec236e04f1d53f6ce" target="_blank">57caca7</a>
+<a href="https://github.com/xiangzhu/scratch/tree/d41b3d47653b118885462b87468441f77344c2eb" target="_blank">d41b3d4</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtree57caca7b01929fe14516f53ec236e04f1d53f6cetargetblank57caca7a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreed41b3d47653b118885462b87468441f77344c2ebtargetblankd41b3d4a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -544,7 +620,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/xiangzhu/scratch/tree/57caca7b01929fe14516f53ec236e04f1d53f6ce" target="_blank">57caca7</a>.
+<a href="https://github.com/xiangzhu/scratch/tree/d41b3d47653b118885462b87468441f77344c2eb" target="_blank">d41b3d4</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -559,6 +635,7 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
@@ -610,6 +687,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/xiangzhu/scratch/blob/d41b3d47653b118885462b87468441f77344c2eb/analysis/compare_gcst90019013.Rmd" target="_blank">d41b3d4</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2025-07-11
+</td>
+<td>
+wflow_publish("analysis/compare_gcst90019013.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xiangzhu/scratch/ef62faa56f3050245f30a1de1d878ea5a3a3c3bc/docs/compare_gcst90019013.html" target="_blank">ef62faa</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2025-04-14
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/xiangzhu/scratch/blob/57caca7b01929fe14516f53ec236e04f1d53f6ce/analysis/compare_gcst90019013.Rmd" target="_blank">57caca7</a>
 </td>
 <td>
@@ -629,103 +740,112 @@ wflow_publish("analysis/compare_gcst90019013.Rmd")
 </div>
 </div>
 </div>
-<div id="overview-of-two-gwas-for-comparison" class="section level2">
-<h2>Overview of two GWAS for comparison</h2>
-<pre><code>Total number of rows after joining two data frames:  14423112 </code></pre>
-<pre><code>Number of rows with the same alleles:  14310719 </code></pre>
-<pre><code>Number of rows with flipped alleles:  140 </code></pre>
-<pre><code>Number of rows with inconsistent alleles:  112253 </code></pre>
-<pre><code>Total number of rows after removing inconsistent alleles:  14310859 </code></pre>
+<div id="ukb-wgs" class="section level2">
+<h2>UKB-WGS</h2>
+<div id="overview-of-two-gwas-for-comparison" class="section level3">
+<h3>Overview of two GWAS for comparison</h3>
+<pre><code>Number of rows in the new GWAS:  82229327 </code></pre>
+<pre><code>Number of rows in the old GWAS:  16241904 </code></pre>
+<pre><code>Number of genome-wide significant variants in the new GWAS:  468 </code></pre>
+<pre><code>Number of genome-wide significant variants in the old GWAS:  189 </code></pre>
+<pre><code>Number of GWAS loci in the new GWAS:  17 </code></pre>
+<pre><code>Number of GWAS loci in the old GWAS:  7 </code></pre>
+<pre><code>Number of rows after joining two data frames:  15980332 </code></pre>
+<pre><code>Number of rows with the same alleles:  15136244 </code></pre>
+<pre><code>Number of rows with flipped alleles:  2813 </code></pre>
+<pre><code>Number of rows with inconsistent alleles:  841275 </code></pre>
+<pre><code>Number of rows after removing inconsistent alleles:  15139057 </code></pre>
 </div>
-<div id="comparison-across-all-variants" class="section level2">
-<h2>Comparison across all variants</h2>
-<pre><code>Pearson correlation between BETA in new and beta in old:
-Estimate =  0.31641411 , 95% CI = [ 0.3159478 ,  0.31688026 ]
+<div id="comparison-across-all-variants" class="section level3">
+<h3>Comparison across all variants</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.28738586 , 95% CI = [ 0.28692367 ,  0.28784792 ]
 
-Regression coefficients for BETA (new ~ old):
-               Estimate   Std. Error    t value     Pr(&gt;|t|)
-(Intercept) 0.000582132 2.425211e-05   24.00336 2.57998e-127
-x           0.396302716 3.140734e-04 1261.81548  0.00000e+00
+Regression coefficients for new_BETA (new ~ old):
+                 Estimate   Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -0.0003300626 2.431855e-05  -13.57246 5.836244e-42
+x            0.3165678235 2.711650e-04 1167.43631 0.000000e+00
 
-Pearson correlation between ZSCORE in new and zscore in old:
-Estimate =  0.47756287 , 95% CI = [ 0.4771628 ,  0.47796274 ]
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.25221987 , 95% CI = [ 0.25174812 ,  0.25269149 ]
 
-Regression coefficients for ZSCORE (new ~ old):
-              Estimate   Std. Error    t value     Pr(&gt;|t|)
-(Intercept) 0.00428021 0.0002399573   17.83738 3.629347e-71
-x           0.48230504 0.0002345753 2056.07758 0.000000e+00
-
-Pearson correlation between LOG10P in new and log10p in old:
-Estimate =  0.25966291 , 95% CI = [ 0.25917968 ,  0.26014602 ]
-
-Regression coefficients for LOG10P (new ~ old):
+Regression coefficients for new_LOG10P (new ~ old):
              Estimate   Std. Error  t value Pr(&gt;|t|)
-(Intercept) 0.3342226 0.0001677949 1991.851        0
-x           0.2665275 0.0002620240 1017.187        0</code></pre>
+(Intercept) 0.3388897 0.0001643290 2062.264        0
+x           0.2602480 0.0002566173 1014.148        0
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.46442504 , 95% CI = [ 0.46402979 ,  0.4648201 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+                 Estimate   Std. Error       t value  Pr(&gt;|t|)
+(Intercept) -1.531637e-05 0.0002358710   -0.06493537 0.9482255
+x            4.705499e-01 0.0002306554 2040.05562999 0.0000000</code></pre>
 </div>
 <div
-id="comparison-across-genome-wide-significant-variants-from-ukb-rap"
-class="section level2">
-<h2>Comparison across genome-wide significant variants from UKB-RAP</h2>
-<pre><code>Pearson correlation between BETA in new and beta in old:
-Estimate =  0.97662981 , 95% CI = [ 0.97170854 ,  0.98070341 ]
+id="comparison-across-genome-wide-significant-variants-from-new-gwas"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from new
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.97066793 , 95% CI = [ 0.96454642 ,  0.97574553 ]
 
-Regression coefficients for BETA (new ~ old):
+Regression coefficients for new_BETA (new ~ old):
                 Estimate   Std. Error   t value      Pr(&gt;|t|)
-(Intercept) -0.002649901 0.0004982875 -5.318017  1.726279e-07
-x            1.902407205 0.0206512519 92.120672 1.505641e-276
+(Intercept) -0.002788362 0.0005453452 -5.113022  4.850920e-07
+x            1.909539619 0.0232173180 82.246348 5.145569e-259
 
-Pearson correlation between ZSCORE in new and zscore in old:
-Estimate =  0.97533896 , 95% CI = [ 0.97014997 ,  0.97963524 ]
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.11766814 , 95% CI = [ 0.0218853 ,  0.21131054 ]
 
-Regression coefficients for ZSCORE (new ~ old):
+Regression coefficients for new_LOG10P (new ~ old):
+             Estimate Std. Error   t value      Pr(&gt;|t|)
+(Intercept) 8.5070282 0.17678481 48.120810 7.067828e-172
+x           0.0850837 0.03524811  2.413851  1.621697e-02
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.96714691 , 95% CI = [ 0.96030537 ,  0.97282562 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
               Estimate Std. Error   t value      Pr(&gt;|t|)
-(Intercept) -0.1946432 0.06574391 -2.960626  3.248035e-03
-x            1.3177638 0.01470915 89.588024 8.284139e-272
-
-Pearson correlation between LOG10P in new and log10p in old:
-Estimate =  0.00599079 , 95% CI = [ -0.0905561 ,  0.10242613 ]
-
-Regression coefficients for LOG10P (new ~ old):
-               Estimate Std. Error    t value      Pr(&gt;|t|)
-(Intercept) 8.686825723 0.14316071 60.6788376 3.084951e-207
-x           0.003230377 0.02659747  0.1214543  9.033906e-01</code></pre>
+(Intercept) -0.2179907 0.07723233 -2.822531  4.993768e-03
+x            1.4049148 0.01812759 77.501478 5.858581e-249</code></pre>
 </div>
 <div
-id="comparison-across-genome-wide-significant-variants-from-gwas-catalog"
-class="section level2">
-<h2>Comparison across genome-wide significant variants from GWAS
-Catalog</h2>
-<pre><code>Pearson correlation between BETA in new and beta in old:
-Estimate =  0.33629423 , 95% CI = [ 0.20257649 ,  0.4577007 ]
+id="comparison-across-genome-wide-significant-variants-from-old-gwas"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from old
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.10653492 , 95% CI = [ -0.03675423 ,  0.2455317 ]
 
-Regression coefficients for BETA (new ~ old):
-              Estimate Std. Error  t value     Pr(&gt;|t|)
-(Intercept) 0.02193237 0.00266208 8.238809 3.099987e-14
-x           0.07020291 0.01445402 4.856981 2.529921e-06
+Regression coefficients for new_BETA (new ~ old):
+              Estimate  Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 0.02114996 0.002530937 8.356573 1.436250e-14
+x           0.02023968 0.013813767 1.465182 1.445507e-01
 
-Pearson correlation between ZSCORE in new and zscore in old:
-Estimate =  0.96164754 , 95% CI = [ 0.94912382 ,  0.97113407 ]
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.47564809 , 95% CI = [ 0.35716556 ,  0.57906594 ]
 
-Regression coefficients for ZSCORE (new ~ old):
-              Estimate Std. Error   t value      Pr(&gt;|t|)
-(Intercept) -0.1035274 0.10157757 -1.019196  3.094411e-01
-x            0.8322887 0.01745337 47.686416 7.126504e-106
-
-Pearson correlation between LOG10P in new and log10p in old:
-Estimate =  0.50288773 , 95% CI = [ 0.38734573 ,  0.6028768 ]
-
-Regression coefficients for LOG10P (new ~ old):
+Regression coefficients for new_LOG10P (new ~ old):
              Estimate Std. Error   t value     Pr(&gt;|t|)
-(Intercept) -9.018342   1.886514 -4.780428 3.557012e-06
-x            1.839215   0.232416  7.913460 2.225507e-13</code></pre>
+(Intercept) -7.983201  1.8742684 -4.259369 3.243735e-05
+x            1.706316  0.2307575  7.394413 4.626437e-12
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.95906752 , 95% CI = [ 0.94580683 ,  0.96913489 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate Std. Error    t value      Pr(&gt;|t|)
+(Intercept) -0.07016899 0.10364179 -0.6770338  4.992212e-01
+x            0.82442216 0.01780075 46.3138916 2.081464e-104</code></pre>
 </div>
 <div id="overlap-of-genome-wide-significant-variants-between-two-gwas"
-class="section level2">
-<h2>Overlap of genome-wide significant variants between two GWAS</h2>
-<pre><code>                       UKB-RAP p &lt;= 5e-8 UKB-RAP p &gt; 5e-8
-GWAS Catalog p &lt;= 5e-8                55              132
-GWAS Catalog p &gt; 5e-8                358         14310314</code></pre>
+class="section level3">
+<h3>Overlap of genome-wide significant variants between two GWAS</h3>
+<pre><code>                     New GWAS p &lt; cutoff New GWAS p &gt;= cutoff
+Old GWAS p &lt; cutoff                   55                  134
+Old GWAS p &gt;= cutoff                 362             15138506</code></pre>
 <pre><code>
     Fisher&#39;s Exact Test for Count Data
 
@@ -736,11 +856,135 @@ alternative hypothesis: true odds ratio is not equal to 1
  8.402051e+03 4.503600e+15
 sample estimates:
 odds ratio 
-     11605 </code></pre>
+  11554.07 </code></pre>
 </div>
-<div id="visualization-of-comparison" class="section level2">
-<h2>Visualization of comparison</h2>
-<p><img src="figure/compare_gcst90019013.Rmd/unnamed-chunk-3-1.png" width="1440" style="display: block; margin: auto;" /><img src="figure/compare_gcst90019013.Rmd/unnamed-chunk-3-2.png" width="1440" style="display: block; margin: auto;" /></p>
+<div id="visualization-of-comparison" class="section level3">
+<h3>Visualization of comparison</h3>
+<p><img src="figure/compare_gcst90019013.Rmd/unnamed-chunk-4-1.png" width="1440" style="display: block; margin: auto;" /><img src="figure/compare_gcst90019013.Rmd/unnamed-chunk-4-2.png" width="1440" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ukb-gel" class="section level2">
+<h2>UKB-GEL</h2>
+<div id="overview-of-two-gwas-for-comparison-1" class="section level3">
+<h3>Overview of two GWAS for comparison</h3>
+<pre><code>Number of rows in the new GWAS:  53435685 </code></pre>
+<pre><code>Number of rows in the old GWAS:  16241904 </code></pre>
+<pre><code>Number of genome-wide significant variants in the new GWAS:  450 </code></pre>
+<pre><code>Number of genome-wide significant variants in the old GWAS:  189 </code></pre>
+<pre><code>Number of GWAS loci in the new GWAS:  17 </code></pre>
+<pre><code>Number of GWAS loci in the old GWAS:  7 </code></pre>
+<pre><code>Relaxed genome-wide significant threshold:  7.30103 </code></pre>
+<pre><code>Number of rows after joining two data frames:  14602647 </code></pre>
+<pre><code>Number of rows with the same alleles:  14379069 </code></pre>
+<pre><code>Number of rows with flipped alleles:  1436 </code></pre>
+<pre><code>Number of rows with inconsistent alleles:  222142 </code></pre>
+<pre><code>Number of rows after removing inconsistent alleles:  14380505 </code></pre>
+</div>
+<div id="comparison-across-all-variants-1" class="section level3">
+<h3>Comparison across all variants</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.31619512 , 95% CI = [ 0.31572987 ,  0.31666022 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error    t value     Pr(&gt;|t|)
+(Intercept) 0.0005780017 2.418323e-05   23.90093 3.01211e-126
+x           0.3962515935 3.135126e-04 1263.90947  0.00000e+00
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.25989196 , 95% CI = [ 0.25940996 ,  0.26037383 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+             Estimate   Std. Error  t value Pr(&gt;|t|)
+(Intercept) 0.3341560 0.0001674207 1995.905        0
+x           0.2667939 0.0002614028 1020.624        0
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.47760987 , 95% CI = [ 0.4772108 ,  0.47800875 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate   Std. Error    t value     Pr(&gt;|t|)
+(Intercept) 0.004273625 0.0002393944   17.85182 2.802891e-71
+x           0.482369790 0.0002340081 2061.33793 0.000000e+00</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-new-gwas-1"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from new
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.97657426 , 95% CI = [ 0.97166114 ,  0.98064394 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error   t value      Pr(&gt;|t|)
+(Intercept) -0.002592009 0.0004965593 -5.219939  2.838017e-07
+x            1.903930742 0.0206181157 92.342616 2.420888e-278
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.01013646 , 95% CI = [ -0.08609306 ,  0.10617859 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+               Estimate Std. Error    t value      Pr(&gt;|t|)
+(Intercept) 8.672198964 0.14198124 61.0798938 3.256513e-209
+x           0.005451792 0.02643202  0.2062571  8.366915e-01
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.97521962 , 95% CI = [ 0.9700267 ,  0.9795222 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+              Estimate Std. Error   t value      Pr(&gt;|t|)
+(Intercept) -0.1859226 0.06564466 -2.832259  4.847719e-03
+x            1.3189627 0.01470590 89.689356 2.381015e-273</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-old-gwas-1"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from old
+GWAS</h3>
+<pre><code>Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.3361533 , 95% CI = [ 0.20279911 ,  0.45726586 ]
+
+Regression coefficients for new_BETA (new ~ old):
+              Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 0.02199088 0.00264822 8.304025 2.031537e-14
+x           0.07017586 0.01441637 4.867790 2.401280e-06
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.49974303 , 95% CI = [ 0.38410322 ,  0.59994612 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -8.943069  1.8891932 -4.733803 4.354220e-06
+x            1.830693  0.2326576  7.868614 2.855604e-13
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.96180808 , 95% CI = [ 0.94937403 ,  0.97123331 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+              Estimate Std. Error    t value      Pr(&gt;|t|)
+(Intercept) -0.1001970 0.10115943 -0.9904856  3.232236e-01
+x            0.8327467 0.01737729 47.9215521 1.329633e-106</code></pre>
+</div>
+<div id="overlap-of-genome-wide-significant-variants-between-two-gwas-1"
+class="section level3">
+<h3>Overlap of genome-wide significant variants between two GWAS</h3>
+<pre><code>                     New GWAS p &lt; cutoff New GWAS p &gt;= cutoff
+Old GWAS p &lt; cutoff                   55                  133
+Old GWAS p &gt;= cutoff                 361             14379956</code></pre>
+<pre><code>
+    Fisher&#39;s Exact Test for Count Data
+
+data:  contingency_table
+p-value &lt; 2.2e-16
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 8.402051e+03 4.503600e+15
+sample estimates:
+odds ratio 
+  11579.33 </code></pre>
+</div>
+<div id="visualization-of-comparison-1" class="section level3">
+<h3>Visualization of comparison</h3>
+<p><img src="figure/compare_gcst90019013.Rmd/unnamed-chunk-7-1.png" width="1440" style="display: block; margin: auto;" /><img src="figure/compare_gcst90019013.Rmd/unnamed-chunk-7-2.png" width="1440" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -749,14 +993,14 @@ Session information
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
-<pre><code>R version 4.4.3 (2025-02-28)
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>R version 4.5.1 (2025-06-13)
 Platform: aarch64-apple-darwin20
-Running under: macOS Sequoia 15.4
+Running under: macOS Sequoia 15.5
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -768,25 +1012,64 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] xzTools_0.0.0.9000 patchwork_1.3.0    ggplot2_3.5.2      dplyr_1.1.4       
-[5] data.table_1.17.0  workflowr_1.7.1   
+[1] MungeSumstats_1.16.0 xzTools_0.0.0.9000   patchwork_1.3.1     
+[4] ggplot2_3.5.2        dplyr_1.1.4          data.table_1.17.8   
+[7] workflowr_1.7.1     
 
 loaded via a namespace (and not attached):
- [1] sass_0.4.9        generics_0.1.3    lattice_0.22-7    stringi_1.8.7    
- [5] digest_0.6.37     magrittr_2.0.3    evaluate_1.0.3    grid_4.4.3       
- [9] fastmap_1.2.0     Matrix_1.7-3      R.oo_1.27.0       rprojroot_2.0.4  
-[13] jsonlite_2.0.0    processx_3.8.6    R.utils_2.13.0    whisker_0.4.1    
-[17] ps_1.9.0          promises_1.3.2    mgcv_1.9-3        httr_1.4.7       
-[21] scales_1.3.0      jquerylib_0.1.4   cli_3.6.4         rlang_1.1.6      
-[25] R.methodsS3_1.8.2 splines_4.4.3     munsell_0.5.1     withr_3.0.2      
-[29] cachem_1.1.0      yaml_2.3.10       tools_4.4.3       colorspace_2.1-1 
-[33] httpuv_1.6.15     vctrs_0.6.5       R6_2.6.1          lifecycle_1.0.4  
-[37] git2r_0.36.2      stringr_1.5.1     fs_1.6.5          pkgconfig_2.0.3  
-[41] callr_3.7.6       pillar_1.10.2     bslib_0.9.0       later_1.4.2      
-[45] gtable_0.3.6      glue_1.8.0        Rcpp_1.0.14       xfun_0.52        
-[49] tibble_3.2.1      tidyselect_1.2.1  rstudioapi_0.17.1 knitr_1.50       
-[53] farver_2.1.2      nlme_3.1-168      htmltools_0.5.8.1 labeling_0.4.3   
-[57] rmarkdown_2.29    compiler_4.4.3    getPass_0.2-4    </code></pre>
+  [1] DBI_1.2.3                   bitops_1.0-9               
+  [3] rlang_1.1.6                 magrittr_2.0.3             
+  [5] git2r_0.36.2                matrixStats_1.5.0          
+  [7] compiler_4.5.1              RSQLite_2.4.1              
+  [9] getPass_0.2-4               mgcv_1.9-3                 
+ [11] GenomicFeatures_1.60.0      png_0.1-8                  
+ [13] callr_3.7.6                 vctrs_0.6.5                
+ [15] stringr_1.5.1               pkgconfig_2.0.3            
+ [17] crayon_1.5.3                fastmap_1.2.0              
+ [19] XVector_0.48.0              labeling_0.4.3             
+ [21] Rsamtools_2.24.0            promises_1.3.3             
+ [23] rmarkdown_2.29              UCSC.utils_1.4.0           
+ [25] ps_1.9.1                    bit_4.6.0                  
+ [27] xfun_0.52                   cachem_1.1.0               
+ [29] GenomeInfoDb_1.44.0         jsonlite_2.0.0             
+ [31] blob_1.2.4                  later_1.4.2                
+ [33] DelayedArray_0.34.1         BiocParallel_1.42.1        
+ [35] parallel_4.5.1              R6_2.6.1                   
+ [37] VariantAnnotation_1.54.1    bslib_0.9.0                
+ [39] stringi_1.8.7               RColorBrewer_1.1-3         
+ [41] rtracklayer_1.68.0          GenomicRanges_1.60.0       
+ [43] jquerylib_0.1.4             Rcpp_1.1.0                 
+ [45] SummarizedExperiment_1.38.1 knitr_1.50                 
+ [47] R.utils_2.13.0              IRanges_2.42.0             
+ [49] httpuv_1.6.16               Matrix_1.7-3               
+ [51] splines_4.5.1               tidyselect_1.2.1           
+ [53] rstudioapi_0.17.1           abind_1.4-8                
+ [55] yaml_2.3.10                 codetools_0.2-20           
+ [57] curl_6.4.0                  processx_3.8.6             
+ [59] lattice_0.22-7              tibble_3.3.0               
+ [61] Biobase_2.68.0              withr_3.0.2                
+ [63] KEGGREST_1.48.1             evaluate_1.0.4             
+ [65] Biostrings_2.76.0           pillar_1.11.0              
+ [67] MatrixGenerics_1.20.0       whisker_0.4.1              
+ [69] stats4_4.5.1                ieugwasr_1.0.4             
+ [71] generics_0.1.4              rprojroot_2.0.4            
+ [73] RCurl_1.98-1.17             S4Vectors_0.46.0           
+ [75] scales_1.4.0                glue_1.8.0                 
+ [77] tools_4.5.1                 BiocIO_1.18.0              
+ [79] BSgenome_1.76.0             GenomicAlignments_1.44.0   
+ [81] fs_1.6.6                    XML_3.99-0.18              
+ [83] grid_4.5.1                  AnnotationDbi_1.70.0       
+ [85] nlme_3.1-168                GenomeInfoDbData_1.2.14    
+ [87] restfulr_0.0.16             cli_3.6.5                  
+ [89] S4Arrays_1.8.1              gtable_0.3.6               
+ [91] R.methodsS3_1.8.2           sass_0.4.10                
+ [93] digest_0.6.37               BiocGenerics_0.54.0        
+ [95] SparseArray_1.8.0           rjson_0.2.23               
+ [97] farver_2.1.2                memoise_2.0.1              
+ [99] htmltools_0.5.8.1           R.oo_1.27.1                
+[101] lifecycle_1.0.4             httr_1.4.7                 
+[103] bit64_4.6.0-1              </code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -811,6 +1094,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -843,6 +1128,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
