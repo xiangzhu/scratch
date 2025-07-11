@@ -1,0 +1,48 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+new_path <- "/Users/xiangzhu/Documents/1-Projects/hfpef/regenie/"
+old_path <- "/Users/xiangzhu/Documents/3-Resources/SUMSTATS/hf2025/"
+old_file <- "FORMAT-METAL_Pheno4_EUR.tsv.gz"
+
+gwsig <- -log10(5e-5)
+```
+
+## UKB-WGS
+
+```{r, include=FALSE}
+new_file <- "single_20250401_eur/hfpef_bin_single_20250401_eur_hermes_hfpef.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/hfpef/analysis/compare_previous_gwas.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(new_plot)
+print(old_plot)
+```
+
+## UKB-GEL
+
+```{r, include=FALSE}
+new_file <- "single_20250201_wbr/hfpef_bin_single_20250201_wbr_hermes_hfpef.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/hfpef/analysis/compare_previous_gwas.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(new_plot)
+print(old_plot)
+```
