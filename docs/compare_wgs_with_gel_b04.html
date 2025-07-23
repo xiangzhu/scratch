@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Xiang Zhu, Ph.D." />
+
+
+<title>Compare GWAS results on the same trait from two versions of input data files</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">scratch</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Compare GWAS results on the same trait from
+two versions of input data files</h1>
+<h4 class="author">Xiang Zhu, Ph.D.</h4>
+<h4 class="date">First created on 2025-04-04; Last modified on
+2025-07-22</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2025-07-22
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>scratch/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20250402code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20250402)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20250402code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20250402)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreea2f0a68eed8b0ec578004b142fb6294c9060f7b8targetblanka2f0a68a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/xiangzhu/scratch/tree/a2f0a68eed8b0ec578004b142fb6294c9060f7b8" target="_blank">a2f0a68</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtreea2f0a68eed8b0ec578004b142fb6294c9060f7b8targetblanka2f0a68a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/xiangzhu/scratch/tree/a2f0a68eed8b0ec578004b142fb6294c9060f7b8" target="_blank">a2f0a68</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown
+(<code>analysis/compare_wgs_with_gel_b04.Rmd</code>) and HTML
+(<code>docs/compare_wgs_with_gel_b04.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xiangzhu/scratch/blob/a2f0a68eed8b0ec578004b142fb6294c9060f7b8/analysis/compare_wgs_with_gel_b04.Rmd" target="_blank">a2f0a68</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2025-07-22
+</td>
+<td>
+compare wgs-based xiangzhu/brain2gene#14 with gel-based
+xiangzhu/brain2gene#2 results
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="ukb-wgs-dcf-vs-ukb-gel-dcf" class="section level2">
+<h2>UKB-WGS DCF vs UKB-GEL DCF</h2>
+<div id="overview-of-two-gwas-for-comparison" class="section level3">
+<h3>Overview of two GWAS for comparison</h3>
+<pre><code>Number of rows in the new data frame:  71262190 </code></pre>
+<pre><code>Number of rows in the old data frame:  49375335 </code></pre>
+<pre><code>Number of genome-wide significant variants in the new GWAS:  1286 </code></pre>
+<pre><code>Number of genome-wide significant variants in the old GWAS:  1164 </code></pre>
+<pre><code>Number of GWAS loci in the new GWAS:  17 </code></pre>
+<pre><code>Number of GWAS loci in the old GWAS:  15 </code></pre>
+<pre><code>Total number of rows after joining two data frames:  46573158 </code></pre>
+</div>
+<div id="comparison-across-all-variants" class="section level3">
+<h3>Comparison across all variants</h3>
+<pre><code>Pearson correlation between new_A1FREQ in new and old_A1FREQ in old:
+Estimate =  0.99987508 , 95% CI = [ 0.99987501 ,  0.99987515 ]
+
+Regression coefficients for new_A1FREQ (new ~ old):
+                Estimate   Std. Error      t value     Pr(&gt;|t|)
+(Intercept) 7.552205e-06 3.897506e-07     19.37702 1.207199e-83
+x           9.997960e-01 2.315853e-06 431718.28274 0.000000e+00
+
+Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.8855117 , 95% CI = [ 0.88544969 ,  0.88557368 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error    t value    Pr(&gt;|t|)
+(Intercept) 0.0002733118 1.698021e-05    16.0959 2.72664e-58
+x           0.8501473651 6.536229e-05 13006.6955 0.00000e+00
+
+Pearson correlation between new_SE in new and old_SE in old:
+Estimate =  0.98533065 , 95% CI = [ 0.98532228 ,  0.98533901 ]
+
+Regression coefficients for new_SE (new ~ old):
+               Estimate   Std. Error    t value Pr(&gt;|t|)
+(Intercept) 0.001344921 6.273441e-06   214.3832        0
+x           0.951208269 2.414058e-05 39402.8782        0
+
+Pearson correlation between new_CHISQ in new and old_CHISQ in old:
+Estimate =  0.84449501 , 95% CI = [ 0.84441261 ,  0.84457736 ]
+
+Regression coefficients for new_CHISQ (new ~ old):
+             Estimate   Std. Error   t value Pr(&gt;|t|)
+(Intercept) 0.1538063 1.426544e-04  1078.174        0
+x           0.8511419 7.909481e-05 10761.034        0
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.83518514 , 95% CI = [ 0.83509825 ,  0.83527199 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate   Std. Error   t value Pr(&gt;|t|)
+(Intercept) 0.07119797 5.096908e-05  1396.886        0
+x           0.83935382 8.099022e-05 10363.644        0
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.90899137 , 95% CI = [ 0.90894146 ,  0.90904125 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+                Estimate   Std. Error     t value     Pr(&gt;|t|)
+(Intercept) 0.0008734054 6.181059e-05    14.13035 2.469611e-45
+x           0.9096943518 6.112392e-05 14882.78881 0.000000e+00</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-ukb-wgs"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from UKB-WGS</h3>
+<pre><code>Pearson correlation between new_A1FREQ in new and old_A1FREQ in old:
+Estimate =  0.99995895 , 95% CI = [ 0.99995391 ,  0.99996345 ]
+
+Regression coefficients for new_A1FREQ (new ~ old):
+                 Estimate   Std. Error      t value  Pr(&gt;|t|)
+(Intercept) -7.122051e-05 0.0000818169   -0.8704865 0.3842172
+x            1.000346e+00 0.0002679837 3732.8609796 0.0000000
+
+Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.99771932 , 95% CI = [ 0.99743931 ,  0.99796875 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -0.003920516 0.0002392074 -16.38961 2.171624e-54
+x            0.998159448 0.0019965379 499.94516 0.000000e+00
+
+Pearson correlation between new_SE in new and old_SE in old:
+Estimate =  0.99918401 , 95% CI = [ 0.99908374 ,  0.99927331 ]
+
+Regression coefficients for new_SE (new ~ old):
+                Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 0.0002832623 1.896013e-05  14.93989 3.075744e-46
+x           0.9509328419 1.136474e-03 836.73957 0.000000e+00
+
+Pearson correlation between new_CHISQ in new and old_CHISQ in old:
+Estimate =  0.97048166 , 95% CI = [ 0.96691286 ,  0.97367068 ]
+
+Regression coefficients for new_CHISQ (new ~ old):
+              Estimate  Std. Error     t value  Pr(&gt;|t|)
+(Intercept) -0.1703576 0.453414586  -0.3757216 0.7071936
+x            1.1169056 0.008206317 136.1031552 0.0000000
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.97048542 , 95% CI = [ 0.96691707 ,  0.97367404 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate  Std. Error   t value Pr(&gt;|t|)
+(Intercept) -0.1205584 0.105987269  -1.13748 0.255576
+x            1.1163134 0.008201419 136.11223 0.000000
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.99840111 , 95% CI = [ 0.99820473 ,  0.99857603 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate  Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -0.06327505 0.012682618  -4.989116 7.005526e-07
+x            1.04861929 0.001755297 597.402818 0.000000e+00</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-ukb-gel"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from UKB-GEL</h3>
+<pre><code>Pearson correlation between new_A1FREQ in new and old_A1FREQ in old:
+Estimate =  0.99996002 , 95% CI = [ 0.99995514 ,  0.99996437 ]
+
+Regression coefficients for new_A1FREQ (new ~ old):
+                 Estimate   Std. Error      t value  Pr(&gt;|t|)
+(Intercept) -6.154306e-05 8.174542e-05   -0.7528624 0.4516856
+x            1.000329e+00 2.628574e-04 3805.5948067 0.0000000
+
+Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.98200787 , 95% CI = [ 0.97983238 ,  0.98395059 ]
+
+Regression coefficients for new_BETA (new ~ old):
+               Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -0.01057512 0.0007146115 -14.79842 1.633171e-45
+x            0.88248370 0.0049869085 176.96007 0.000000e+00
+
+Pearson correlation between new_SE in new and old_SE in old:
+Estimate =  0.9979869 , 95% CI = [ 0.99774129 ,  0.99820583 ]
+
+Regression coefficients for new_SE (new ~ old):
+               Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 0.001100025 3.632228e-05  30.28513 7.20589e-149
+x           0.892054139 1.665871e-03 535.48824  0.00000e+00
+
+Pearson correlation between new_CHISQ in new and old_CHISQ in old:
+Estimate =  0.96813378 , 95% CI = [ 0.96431093 ,  0.97155307 ]
+
+Regression coefficients for new_CHISQ (new ~ old):
+             Estimate Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -2.890593 0.48535659  -5.955606 3.432098e-09
+x            1.157019 0.00879515 131.551886 0.000000e+00
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.96812808 , 95% CI = [ 0.96430456 ,  0.97154798 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate  Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -0.7634375 0.113574168  -6.721929 2.808532e-11
+x            1.1572228 0.008797528 131.539541 0.000000e+00
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.99816976 , 95% CI = [ 0.99794644 ,  0.99836882 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+              Estimate  Std. Error    t value    Pr(&gt;|t|)
+(Intercept) -0.1151711 0.013366109  -8.616652 2.22668e-17
+x            1.0386676 0.001849216 561.679995 0.00000e+00</code></pre>
+</div>
+<div id="overlap-of-genome-wide-significant-variants-between-two-gwas"
+class="section level3">
+<h3>Overlap of genome-wide significant variants between two GWAS</h3>
+<pre><code>                  UKB-WGS p &lt; 5e-8 UKB-WGS p &gt;= 5e-8
+UKB-GEL p &lt; 5e-8              1075                85
+UKB-GEL p &gt;= 5e-8               71          46571927</code></pre>
+<pre><code>
+    Fisher&#39;s Exact Test for Count Data
+
+data:  contingency_table
+p-value &lt; 2.2e-16
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 8.402051e+03 4.503600e+15
+sample estimates:
+odds ratio 
+4.5036e+15 </code></pre>
+</div>
+<div id="visualization-of-comparison" class="section level3">
+<h3>Visualization of comparison</h3>
+<p><img src="figure/compare_wgs_with_gel_b04.Rmd/unnamed-chunk-4-1.png" width="1440" style="display: block; margin: auto;" /><img src="figure/compare_wgs_with_gel_b04.Rmd/unnamed-chunk-4-2.png" width="1440" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ukb-wgs-dcf-vs-ukb-gel-not" class="section level2">
+<h2>UKB-WGS DCF vs UKB-GEL NOT</h2>
+<div id="overview-of-two-gwas-for-comparison-1" class="section level3">
+<h3>Overview of two GWAS for comparison</h3>
+<pre><code>Number of rows in the new data frame:  71262190 </code></pre>
+<pre><code>Number of rows in the old data frame:  49845567 </code></pre>
+<pre><code>Number of genome-wide significant variants in the new GWAS:  1286 </code></pre>
+<pre><code>Number of genome-wide significant variants in the old GWAS:  1163 </code></pre>
+<pre><code>Number of GWAS loci in the new GWAS:  17 </code></pre>
+<pre><code>Number of GWAS loci in the old GWAS:  16 </code></pre>
+<pre><code>Total number of rows after joining two data frames:  46925689 </code></pre>
+</div>
+<div id="comparison-across-all-variants-1" class="section level3">
+<h3>Comparison across all variants</h3>
+<pre><code>Pearson correlation between new_A1FREQ in new and old_A1FREQ in old:
+Estimate =  0.99987472 , 95% CI = [ 0.99987465 ,  0.99987479 ]
+
+Regression coefficients for new_A1FREQ (new ~ old):
+                Estimate   Std. Error      t value     Pr(&gt;|t|)
+(Intercept) 7.612031e-06 3.874776e-07     19.64509 6.373927e-86
+x           9.997960e-01 2.310489e-06 432720.44804 0.000000e+00
+
+Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.8825327 , 95% CI = [ 0.88246942 ,  0.88259596 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error     t value      Pr(&gt;|t|)
+(Intercept) 0.0003735586 1.717845e-05    21.74577 7.584677e-105
+x           0.8480566782 6.596575e-05 12856.01520  0.000000e+00
+
+Pearson correlation between new_SE in new and old_SE in old:
+Estimate =  0.98484836 , 95% CI = [ 0.98483976 ,  0.98485697 ]
+
+Regression coefficients for new_SE (new ~ old):
+               Estimate   Std. Error    t value Pr(&gt;|t|)
+(Intercept) 0.001539307 6.370321e-06   241.6372        0
+x           0.950454029 2.443149e-05 38902.8343        0
+
+Pearson correlation between new_CHISQ in new and old_CHISQ in old:
+Estimate =  0.84099899 , 95% CI = [ 0.84091521 ,  0.84108272 ]
+
+Regression coefficients for new_CHISQ (new ~ old):
+             Estimate   Std. Error   t value Pr(&gt;|t|)
+(Intercept) 0.1581153 1.434832e-04  1101.978        0
+x           0.8484663 7.968206e-05 10648.148        0
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.83142527 , 95% CI = [ 0.83133692 ,  0.83151359 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate   Std. Error   t value Pr(&gt;|t|)
+(Intercept) 0.07301195 5.127949e-05  1423.804        0
+x           0.83634786 8.159231e-05 10250.327        0
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.90674213 , 95% CI = [ 0.90669124 ,  0.90679299 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate   Std. Error     t value     Pr(&gt;|t|)
+(Intercept) 0.001088539 6.229180e-05    17.47484 2.228647e-68
+x           0.908282071 6.166239e-05 14729.91964 0.000000e+00</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-ukb-wgs-1"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from UKB-WGS</h3>
+<pre><code>Pearson correlation between new_A1FREQ in new and old_A1FREQ in old:
+Estimate =  0.99995895 , 95% CI = [ 0.99995391 ,  0.99996345 ]
+
+Regression coefficients for new_A1FREQ (new ~ old):
+                 Estimate   Std. Error      t value  Pr(&gt;|t|)
+(Intercept) -7.122051e-05 0.0000818169   -0.8704865 0.3842172
+x            1.000346e+00 0.0002679837 3732.8609796 0.0000000
+
+Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.99765908 , 95% CI = [ 0.99737168 ,  0.99791509 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -0.004171276 0.0002420689 -17.23177 2.451578e-59
+x            0.991827244 0.0020099949 493.44765 0.000000e+00
+
+Pearson correlation between new_SE in new and old_SE in old:
+Estimate =  0.99916586 , 95% CI = [ 0.99906336 ,  0.99925714 ]
+
+Regression coefficients for new_SE (new ~ old):
+                Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 0.0003067322 1.914633e-05  16.02042 2.870196e-52
+x           0.9493376069 1.147136e-03 827.57199 0.000000e+00
+
+Pearson correlation between new_CHISQ in new and old_CHISQ in old:
+Estimate =  0.97752848 , 95% CI = [ 0.97480076 ,  0.97996394 ]
+
+Regression coefficients for new_CHISQ (new ~ old):
+              Estimate Std. Error     t value  Pr(&gt;|t|)
+(Intercept) -0.3070695 0.39458878  -0.7782014 0.4366112
+x            1.1209907 0.00714722 156.8429043 0.0000000
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.97747658 , 95% CI = [ 0.97474264 ,  0.97991761 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate  Std. Error    t value  Pr(&gt;|t|)
+(Intercept) -0.1486246 0.092322114  -1.609848 0.1077068
+x            1.1200043 0.007149458 156.655832 0.0000000
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.99867169 , 95% CI = [ 0.99850851 ,  0.99881702 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate  Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -0.04113289 0.011581199  -3.551695 0.0003983279
+x            1.05146325 0.001603908 655.563434 0.0000000000</code></pre>
+</div>
+<div
+id="comparison-across-genome-wide-significant-variants-from-ukb-gel-1"
+class="section level3">
+<h3>Comparison across genome-wide significant variants from UKB-GEL</h3>
+<pre><code>Pearson correlation between new_A1FREQ in new and old_A1FREQ in old:
+Estimate =  0.99995992 , 95% CI = [ 0.99995502 ,  0.99996428 ]
+
+Regression coefficients for new_A1FREQ (new ~ old):
+                 Estimate   Std. Error      t value  Pr(&gt;|t|)
+(Intercept) -6.218413e-05 8.197768e-05   -0.7585495 0.4482765
+x            1.000328e+00 2.632094e-04 3800.5022522 0.0000000
+
+Pearson correlation between new_BETA in new and old_BETA in old:
+Estimate =  0.98564116 , 95% CI = [ 0.98390141 ,  0.9871941 ]
+
+Regression coefficients for new_BETA (new ~ old):
+                Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -0.009244692 0.0006745362 -13.70526 9.919329e-40
+x            0.899901768 0.0045303539 198.63830 0.000000e+00
+
+Pearson correlation between new_SE in new and old_SE in old:
+Estimate =  0.99707046 , 95% CI = [ 0.99671321 ,  0.99738892 ]
+
+Regression coefficients for new_SE (new ~ old):
+              Estimate   Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 0.00083823 4.741809e-05  17.67743 4.279267e-62
+x           0.91052645 2.052623e-03 443.59171 0.000000e+00
+
+Pearson correlation between new_CHISQ in new and old_CHISQ in old:
+Estimate =  0.976093 , 95% CI = [ 0.97321198 ,  0.97866751 ]
+
+Regression coefficients for new_CHISQ (new ~ old):
+             Estimate  Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -3.036377 0.419025813  -7.246277 7.804267e-13
+x            1.161677 0.007601623 152.819652 0.000000e+00
+
+Pearson correlation between new_LOG10P in new and old_LOG10P in old:
+Estimate =  0.97604702 , 95% CI = [ 0.97316054 ,  0.97862643 ]
+
+Regression coefficients for new_LOG10P (new ~ old):
+              Estimate  Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -0.7939362 0.098110345  -8.092278 1.468863e-15
+x            1.1614895 0.007607968 152.667506 0.000000e+00
+
+Pearson correlation between new_ZSCORE in new and old_ZSCORE in old:
+Estimate =  0.99846826 , 95% CI = [ 0.99828133 ,  0.99863488 ]
+
+Regression coefficients for new_ZSCORE (new ~ old):
+               Estimate  Std. Error    t value     Pr(&gt;|t|)
+(Intercept) -0.08812389 0.012251956  -7.192638 1.138256e-12
+x            1.04190933 0.001696611 614.112215 0.000000e+00</code></pre>
+</div>
+<div id="overlap-of-genome-wide-significant-variants-between-two-gwas-1"
+class="section level3">
+<h3>Overlap of genome-wide significant variants between two GWAS</h3>
+<pre><code>                  UKB-WGS p &lt; 5e-8 UKB-WGS p &gt;= 5e-8
+UKB-GEL p &lt; 5e-8              1071                89
+UKB-GEL p &gt;= 5e-8               75          46924454</code></pre>
+<pre><code>
+    Fisher&#39;s Exact Test for Count Data
+
+data:  contingency_table
+p-value &lt; 2.2e-16
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 8.402051e+03 4.503600e+15
+sample estimates:
+odds ratio 
+4.5036e+15 </code></pre>
+</div>
+<div id="visualization-of-comparison-1" class="section level3">
+<h3>Visualization of comparison</h3>
+<p><img src="figure/compare_wgs_with_gel_b04.Rmd/unnamed-chunk-7-1.png" width="1440" style="display: block; margin: auto;" /><img src="figure/compare_wgs_with_gel_b04.Rmd/unnamed-chunk-7-2.png" width="1440" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>R version 4.5.1 (2025-06-13)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sequoia 15.5
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/Los_Angeles
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] xzTools_0.0.0.9000 patchwork_1.3.1    ggplot2_3.5.2      dplyr_1.1.4       
+[5] data.table_1.17.8  workflowr_1.7.1   
+
+loaded via a namespace (and not attached):
+ [1] sass_0.4.10        generics_0.1.4     lattice_0.22-7     stringi_1.8.7     
+ [5] digest_0.6.37      magrittr_2.0.3     evaluate_1.0.4     grid_4.5.1        
+ [9] RColorBrewer_1.1-3 fastmap_1.2.0      Matrix_1.7-3       R.oo_1.27.1       
+[13] rprojroot_2.0.4    jsonlite_2.0.0     processx_3.8.6     R.utils_2.13.0    
+[17] whisker_0.4.1      ps_1.9.1           promises_1.3.3     httr_1.4.7        
+[21] mgcv_1.9-3         scales_1.4.0       jquerylib_0.1.4    cli_3.6.5         
+[25] rlang_1.1.6        R.methodsS3_1.8.2  splines_4.5.1      withr_3.0.2       
+[29] cachem_1.1.0       yaml_2.3.10        tools_4.5.1        httpuv_1.6.16     
+[33] vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4    git2r_0.36.2      
+[37] stringr_1.5.1      fs_1.6.6           pkgconfig_2.0.3    callr_3.7.6       
+[41] pillar_1.11.0      bslib_0.9.0        later_1.4.2        gtable_0.3.6      
+[45] glue_1.8.0         Rcpp_1.1.0         xfun_0.52          tibble_3.3.0      
+[49] tidyselect_1.2.1   rstudioapi_0.17.1  knitr_1.50         farver_2.1.2      
+[53] nlme_3.1-168       htmltools_0.5.8.1  labeling_0.4.3     rmarkdown_2.29    
+[57] compiler_4.5.1     getPass_0.2-4     </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
