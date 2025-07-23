@@ -1,0 +1,47 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+new_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie/single_20241220_eur"
+new_file <- "single_20241220_eur_sn_r_qsm_50th.regenie.gz"
+```
+
+## UKB-WGS DCF vs UKB-GEL DCF
+
+```{r, include=FALSE}
+old_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie/dcf_single_2024_wbr"
+old_file <- "dcf_rickidps_single_20241220_wbr_sn_r_qsm_idps_MNI2006a_50th.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/analysis/compare_gel_wgs.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(ukbwgs_plot)
+print(ukbgel_plot)
+```
+
+## UKB-WGS DCF vs UKB-GEL NOT
+
+```{r, include=FALSE}
+old_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie/single_2024_wbr"
+old_file <- "qsm_median_20241220_wbr_sn_r_qsm_idps_MNI2006a_50th.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/analysis/compare_gel_wgs.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(ukbwgs_plot)
+print(ukbgel_plot)
+```
