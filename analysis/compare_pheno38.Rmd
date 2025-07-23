@@ -1,0 +1,28 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+new_path <- "/Users/xiangzhu/Downloads/tmp/"
+old_path <- "/Users/xiangzhu/Documents/3-Resources/SUMSTATS/cmr2023/"
+old_file <- "ukb_phase1to3_heart_may_2022_pheno38.fastGWA"
+```
+
+```{r, include=FALSE}
+new_file <- "cardiac_95idps_81k_single_eur_AAo_distensibility.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/hfpef/analysis/compare_previous_gwas.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(new_plot)
+print(old_plot)
+```
