@@ -1,0 +1,52 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## UKB-WGS DCF I2 vs UKB-GEL NOT I2
+
+```{r, include=FALSE}
+gwsig <- -log10(5e-5)
+
+new_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie/i2_repeat_20241220_eur"
+new_file <- "i2_repeat_20241220_eur_sn_l_swi_50th.regenie.gz"
+
+old_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie/i2_repeat_2024_wbr"
+old_file <- "rickidps_i2_repeat_20241220_wbr_sn_l_swi_idps_MNI2006a_50th.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/analysis/compare_gel_wgs.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(ukbwgs_plot)
+print(ukbgel_plot)
+```
+
+## UKB-WGS DCF I3 vs UKB-GEL NOT I3
+
+```{r, include=FALSE}
+gwsig <- -log10(5e-5)
+
+new_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie/i3_repeat_20241220_eur"
+new_file <- "i3_repeat_20241220_eur_sn_l_swi_50th.regenie.gz"
+
+old_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie/i3_repeat_2024_wbr"
+old_file <- "rickidps_i3_repeat_20241220_wbr_sn_l_swi_idps_MNI2006a_50th.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/brain2gene/analysis/compare_gel_wgs.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(ukbwgs_plot)
+print(ukbgel_plot)
+```
