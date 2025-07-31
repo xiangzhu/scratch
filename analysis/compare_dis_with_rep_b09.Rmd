@@ -1,0 +1,65 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+dat_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/regenie"
+dis_path <- "single_20241220_eur"
+dis_name <- "single_20241220_eur_n1_r_vol_nln.regenie.gz"
+```
+
+## EUR Single vs EUR Repeat I2
+
+```{r, include=FALSE}
+rep_path <- "i2_repeat_20241220_eur"
+rep_name <- "i2_repeat_20241220_eur_n1_r_vol_nln.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/xzScripts/check_replication.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(dis_plot)
+rm(dis_plot)
+```
+
+## EUR Single vs EUR Repeat I3
+
+```{r, include=FALSE}
+rep_path <- "i3_repeat_20241220_eur"
+rep_name <- "i3_repeat_20241220_eur_n1_r_vol_nln.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/xzScripts/check_replication.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(dis_plot)
+rm(dis_plot)
+```
+
+## EUR Single vs CSA Marginal I2
+
+```{r, include=FALSE}
+rep_path <- "i2_marginal_20241220_csa"
+rep_name <- "i2_marginal_20241220_csa_n1_r_vol_nln.regenie.gz"
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/xzScripts/check_replication.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(dis_plot)
+rm(dis_plot)
+```
