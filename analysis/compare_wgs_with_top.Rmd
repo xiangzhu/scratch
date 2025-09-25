@@ -1,0 +1,26 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r,include=FALSE}
+old_file <- "/Users/xiangzhu/GitHub/run-regenie/test-assoc/archive/cardiac_95idps_81k_single_eur_seg34_step2_AAo_distensibility.regenie.gz"
+new_file <- "/Users/xiangzhu/GitHub/run-regenie/test-assoc/cardiac_95idps_81k_single_eur_seg34_step2_AAo_distensibility.regenie.gz"
+```
+
+## Summary of comparison
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/run-regenie/docs/compare_two_step2.Rmd"), echo=FALSE}
+```
+
+## Visualization of comparison
+
+```{r, fig.align='center',echo=FALSE}
+for (p in plot_ls) {
+  print(p)
+}
+```
