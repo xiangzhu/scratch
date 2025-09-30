@@ -1,0 +1,31 @@
+---
+title: "Compare GWAS results on the same trait from two versions of input data files"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+res_path <- "/Users/xiangzhu/Downloads/tmp/"
+phe_name <- "DAo_distensibility"
+
+old_flag <- "top"
+old_path <- paste0(res_path,old_flag)
+old_file <- paste0("cardiac_95idps_81k_single_eur_",phe_name,".regenie.gz")
+  
+new_flag <- "wgs"
+new_path <- paste0(res_path,new_flag)
+new_file <- paste0("cardiac_95idps_81k_single_eur_",phe_name,".regenie.gz")
+```
+
+```{r child=file.path(Sys.getenv("HOME"),"GitHub/xzScripts/wflow_tpl/compare_old_new.Rmd"), echo=FALSE}
+```
+
+### Visualization of comparison
+
+```{r, fig.width=15, fig.height=5, fig.align='center',echo=FALSE}
+print(new_plot)
+print(old_plot)
+```
