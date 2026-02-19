@@ -1,0 +1,39 @@
+---
+title: "Compare two runs of MAGMA GSA on the same input data"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(xzTools)
+})
+
+old_dt <- data.table::fread(
+  file = "/Users/xiangzhu/Downloads/magma_20251006/20251119/n1_l_qsm_50th_siletti2023.gsa.out",
+  skip = 4
+)
+new_dt <- data.table::fread(
+  file = "/Users/xiangzhu/Documents/1-Projects/brain2gene/magma/single_20241220_eur/output_NCBI37.3.gene.loc_up35kb_down10kb/n1_l_qsm_50th_siletti2023.gsa.out",
+  skip = 4
+)
+
+identical(old_dt[, 1:3], new_dt[, 1:3])
+
+res <- xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt)[-c(1:3)],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+res$fig
+```
