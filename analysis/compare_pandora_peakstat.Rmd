@@ -1,0 +1,37 @@
+---
+title: "Compare two runs of PANDORA regression on the same input data"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(xzTools)
+})
+
+old_dt <- data.table::fread(
+  file = "/Users/xiangzhu/Downloads/pandora_rs7234631_20251020/all_stats.txt"
+)
+new_dt <- data.table::fread(
+  file = "/Users/xiangzhu/Downloads/pandora_rs7234631_20260309/all_stats.txt"
+)
+
+identical(old_dt[, 1], new_dt[, 1])
+
+res <- xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt)[-1],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+res$fig
+```
