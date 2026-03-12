@@ -1,0 +1,64 @@
+---
+title: "Compare two batch runs of fastglm on the same input data"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(data.table)
+  library(xzTools)
+})
+```
+
+## BWAS
+
+```{r}
+old_ls <- readRDS("/Users/xiangzhu/Downloads/pd_bwas_20251129_pb1_vb1.rds")
+new_ls <- readRDS("/Users/xiangzhu/Documents/1-Projects/pd/bwas/ukb20251129_5631idp_12bin_pb1_vb1.rds")
+
+old_dt <- data.table::rbindlist(old_ls, idcol = "model")
+new_dt <- data.table::rbindlist(new_ls, idcol = "model")
+new_dt <- new_dt[old_dt, on = .(model, phe, var), nomatch = NULL]
+
+xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+rm(list = ls())
+```
+
+## PheWAS
+
+```{r}
+old_dt <- readRDS("/Users/xiangzhu/Downloads/ukb20251129_615gen_410con_pb1_vb1.rds")
+new_dt <- readRDS("/Users/xiangzhu/Documents/1-Projects/brain2gene/phewas/single_20241220_eur/ukb_con/ukb20251129_615gen_410con_pb1_vb1.rds")
+
+old_dt <- data.table::as.data.table(old_dt)
+new_dt <- data.table::as.data.table(new_dt)
+
+new_dt <- new_dt[old_dt, on = .(phe, var), nomatch = NULL]
+
+xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+rm(list = ls())
+```
