@@ -1,0 +1,83 @@
+---
+title: "Compare two runs of pheTK on the same input data"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(data.table)
+  library(xzTools)
+})
+```
+
+## Direct vs Script
+
+```{r}
+old_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/direct_chr18_53346253_T_C_phewas_results.tsv")
+new_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/chr18_53346253_T_C_phewas_results.tsv")
+
+data.table::setorder(old_dt, phecode)
+data.table::setorder(new_dt, phecode)
+
+xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+scat<-xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt)[4:11],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+scat$fig
+```
+
+## `20260318` vs `20260326`   
+
+```{r}
+old_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260318/chr18_53346253_T_C_phewas_results.tsv")
+new_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/chr18_53346253_T_C_phewas_results.tsv")
+
+data.table::setorder(old_dt, phecode)
+data.table::setorder(new_dt, phecode)
+
+xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+scat<-xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = names(old_dt)[4:11],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+scat$fig
+```
