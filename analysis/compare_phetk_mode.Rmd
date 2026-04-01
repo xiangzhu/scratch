@@ -1,0 +1,229 @@
+---
+title: "Compare two runs of pheTK on the same input data in direct and dsub mode"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(data.table)
+  library(xzTools)
+})
+
+new_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/dsub_5a_results.tsv")
+data.table::setorder(new_dt, phecode)
+```
+
+## Comparison with `20260326 direct`
+
+```{r}
+old_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/direct_chr18_53346253_T_C_phewas_results.tsv")
+data.table::setorder(old_dt, phecode)
+
+table(new_dt$phecode %in% old_dt$phecode, useNA = "always")
+table(old_dt$phecode %in% new_dt$phecode, useNA = "always")
+
+shared_phecode <- intersect(new_dt$phecode, old_dt$phecode)
+old_dt[!(phecode %in% shared_phecode)]
+
+summary(old_dt[!(phecode %in% shared_phecode)]$p_value)
+summary(old_dt[phecode %in% shared_phecode]$p_value)
+
+summary(old_dt[!(phecode %in% shared_phecode)]$cases)
+summary(old_dt[phecode %in% shared_phecode]$cases)
+
+table(old_dt[!(phecode %in% shared_phecode)]$converged, useNA = "always")
+table(old_dt[phecode %in% shared_phecode]$converged, useNA = "always")
+
+new_dt_shared <- new_dt[phecode %in% shared_phecode]
+old_dt_shared <- old_dt[phecode %in% shared_phecode]
+
+xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+scat<-xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared)[4:11],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+scat$fig
+
+rm(old_dt,shared_phecode,old_dt_shared,new_dt_shared)
+```
+
+## Comparison with `20260326 dsub 4c`
+
+```{r}
+old_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/dsub_4c_results.tsv")
+data.table::setorder(old_dt, phecode)
+
+table(new_dt$phecode %in% old_dt$phecode, useNA = "always")
+table(old_dt$phecode %in% new_dt$phecode, useNA = "always")
+
+shared_phecode <- intersect(new_dt$phecode, old_dt$phecode)
+new_dt_shared <- new_dt[phecode %in% shared_phecode]
+old_dt_shared <- old_dt[phecode %in% shared_phecode]
+
+xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+scat<-xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared)[4:11],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+scat$fig
+
+rm(old_dt,shared_phecode,old_dt_shared,new_dt_shared)
+```
+
+## Comparison with `20260326 dsub 4b`
+
+```{r}
+old_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/dsub_4b_results.tsv")
+data.table::setorder(old_dt, phecode)
+
+table(new_dt$phecode %in% old_dt$phecode, useNA = "always")
+table(old_dt$phecode %in% new_dt$phecode, useNA = "always")
+
+shared_phecode <- intersect(new_dt$phecode, old_dt$phecode)
+new_dt_shared <- new_dt[phecode %in% shared_phecode]
+old_dt_shared <- old_dt[phecode %in% shared_phecode]
+
+xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+scat<-xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared)[4:11],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+scat$fig
+
+rm(old_dt,shared_phecode,old_dt_shared,new_dt_shared)
+```
+
+## Comparison with `20260326 dsub 4a`
+
+```{r}
+old_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260326/dsub_4a_results.tsv")
+data.table::setorder(old_dt, phecode)
+
+table(new_dt$phecode %in% old_dt$phecode, useNA = "always")
+table(old_dt$phecode %in% new_dt$phecode, useNA = "always")
+
+shared_phecode <- intersect(new_dt$phecode, old_dt$phecode)
+new_dt_shared <- new_dt[phecode %in% shared_phecode]
+old_dt_shared <- old_dt[phecode %in% shared_phecode]
+
+xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+scat<-xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared)[4:11],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+scat$fig
+
+rm(old_dt,shared_phecode,old_dt_shared,new_dt_shared)
+```
+
+## Comparison with `20260318 dsub`
+
+```{r}
+old_dt <- data.table::fread("/Users/xiangzhu/Downloads/phetk_aou_20260318/chr18_53346253_T_C_phewas_results_dsub.tsv")
+data.table::setorder(old_dt, phecode)
+
+table(new_dt$phecode %in% old_dt$phecode, useNA = "always")
+table(old_dt$phecode %in% new_dt$phecode, useNA = "always")
+
+shared_phecode <- intersect(new_dt$phecode, old_dt$phecode)
+new_dt_shared <- new_dt[phecode %in% shared_phecode]
+old_dt_shared <- old_dt[phecode %in% shared_phecode]
+
+xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared),
+  cols_to_match = NULL,
+  get_exact_match = TRUE,
+  get_correlation = FALSE,
+  get_regression = FALSE,
+  get_scatterplot = FALSE
+)
+
+scat<-xzTools::compare_2dts(
+  new_dt = new_dt_shared,
+  old_dt = old_dt_shared,
+  cols_to_compare = names(old_dt_shared)[4:11],
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+scat$fig
+
+rm(old_dt,shared_phecode,old_dt_shared,new_dt_shared)
+```
