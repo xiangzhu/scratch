@@ -1,0 +1,117 @@
+---
+title: "Compare COLOC-PIP on different versions of the same input data"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(data.table)
+  library(xzTools)
+})
+
+dat_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/coloc/single_20241220_eur"
+```
+
+## Comparison between two versions of the same input data
+
+```{r}
+old_files <- list.files(
+  path = file.path(dat_path,"opentargets2512_20260102"),
+  pattern = "\\.rds$",
+  full.names = TRUE
+)
+new_files <- list.files(
+  path = file.path(dat_path,"opentargets2603_20260426"),
+  pattern = "\\.rds$",
+  full.names = TRUE
+)
+
+old_data <- lapply(old_files, readRDS)
+new_data <- lapply(new_files, readRDS)
+
+old_dt <- data.table::rbindlist(
+  lapply(old_data, `[[`, "coloc_dt"),
+  fill = TRUE
+)
+new_dt <- data.table::rbindlist(
+  lapply(new_data, `[[`, "coloc_dt"),
+  fill = TRUE
+)
+rm(old_data, new_data, old_files, new_files,dat_path)
+
+table(old_dt$studyLocusId %in% new_dt$studyLocusId,useNA="always")
+table(new_dt$studyLocusId %in% old_dt$studyLocusId,useNA="always")
+
+table(old_dt$pheHitId %in% new_dt$pheHitId,useNA="always")
+table(new_dt$pheHitId %in% old_dt$pheHitId,useNA="always")
+```
+
+```{r}
+cmp_dt <- merge(old_dt[, .(studyLocusId, pheHitId, ppH3, ppH4)],new_dt[, .(studyLocusId, pheHitId, ppH3_inter, ppH4_inter, ppH3_union, ppH4_union)],by = c("studyLocusId", "pheHitId"),all = FALSE)
+
+identical(cmp_dt$ppH3, cmp_dt$ppH3_union)
+identical(cmp_dt$ppH4, cmp_dt$ppH4_union)
+
+all.equal(cmp_dt$ppH3, cmp_dt$ppH3_union)
+all.equal(cmp_dt$ppH4, cmp_dt$ppH4_union)
+
+summary(cmp_dt$ppH3-cmp_dt$ppH3_union)
+summary(cmp_dt$ppH4-cmp_dt$ppH4_union)
+
+c(
+  which.min(cmp_dt$ppH3_union - cmp_dt$ppH3),
+  which.max(cmp_dt$ppH4_union - cmp_dt$ppH4)
+)
+c(
+  which.max(cmp_dt$ppH3_union - cmp_dt$ppH3),
+  which.min(cmp_dt$ppH4_union - cmp_dt$ppH4)
+)
+
+cmp_dt[which.max(cmp_dt$ppH4_union - cmp_dt$ppH4)]
+new_dt[studyLocusId=="90613afc2c90e1a89d0723016bd40a4f" & pheHitId=="sn_l_vol_nln_chr12_123292021_susie_L1"]
+old_dt[studyLocusId=="90613afc2c90e1a89d0723016bd40a4f" & pheHitId=="sn_l_vol_nln_chr12_123292021_susie_L1"]
+
+cmp_dt[which.min(cmp_dt$ppH4_union - cmp_dt$ppH4)]
+new_dt[studyLocusId=="8373eb1b582c0abe146549626172bbb0" & pheHitId=="lc_vol_nln_chr7_2768961_susie_L1"]
+old_dt[studyLocusId=="8373eb1b582c0abe146549626172bbb0" & pheHitId=="lc_vol_nln_chr7_2768961_susie_L1"]
+
+res <- xzTools::compare_2dts(
+  new_dt = cmp_dt,
+  old_dt = cmp_dt,
+  cols_to_compare = c("ppH3_union" = "ppH3", "ppH4_union" = "ppH4"),
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+res$fig
+rm(res, cmp_dt,old_dt)
+```
+
+## Comparison between union and intersection
+
+```{r}
+summary(new_dt$ppH3_inter - new_dt$ppH3_union)
+summary(new_dt$ppH4_inter - new_dt$ppH4_union)
+
+res <- xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = new_dt,
+  cols_to_compare = c("ppH3_inter" = "ppH3_union", "ppH4_inter" = "ppH4_union"),
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+res$fig
+rm(res, new_dt)
+```
