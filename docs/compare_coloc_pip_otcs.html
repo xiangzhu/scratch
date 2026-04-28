@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Xiang Zhu, Ph.D." />
+
+
+<title>Compare COLOC-PIP on different versions of the same input data</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">scratch</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Compare COLOC-PIP on different versions of
+the same input data</h1>
+<h4 class="author">Xiang Zhu, Ph.D.</h4>
+<h4 class="date">First created on 2025-04-04; Last modified on
+2026-04-28</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2026-04-28
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>scratch/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.2). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20250402code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20250402)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20250402code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20250402)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtree69f946ccb69beb8fab9bd6ba0d36270ace129587targetblank69f946ca">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/xiangzhu/scratch/tree/69f946ccb69beb8fab9bd6ba0d36270ace129587" target="_blank">69f946c</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomxiangzhuscratchtree69f946ccb69beb8fab9bd6ba0d36270ace129587targetblank69f946ca"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/xiangzhu/scratch/tree/69f946ccb69beb8fab9bd6ba0d36270ace129587" target="_blank">69f946c</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown
+(<code>analysis/compare_coloc_pip_otcs.Rmd</code>) and HTML
+(<code>docs/compare_coloc_pip_otcs.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xiangzhu/scratch/blob/69f946ccb69beb8fab9bd6ba0d36270ace129587/analysis/compare_coloc_pip_otcs.Rmd" target="_blank">69f946c</a>
+</td>
+<td>
+Xiang Zhu
+</td>
+<td>
+2026-04-28
+</td>
+<td>
+wflow_publish("analysis/compare_coloc_pip_otcs.Rmd")
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">library</span>(data.table)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">library</span>(xzTools)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>})</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>dat_path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/xiangzhu/Documents/1-Projects/brain2gene/coloc/single_20241220_eur&quot;</span></span></code></pre></div>
+<div id="comparison-between-two-versions-of-the-same-input-data"
+class="section level2">
+<h2>Comparison between two versions of the same input data</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>old_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">file.path</span>(dat_path,<span class="st">&quot;opentargets2512_20260102&quot;</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.rds$&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="at">full.names =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>new_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">file.path</span>(dat_path,<span class="st">&quot;opentargets2603_20260426&quot;</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.rds$&quot;</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  <span class="at">full.names =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>)</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>old_data <span class="ot">&lt;-</span> <span class="fu">lapply</span>(old_files, readRDS)</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">lapply</span>(new_files, readRDS)</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>old_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">rbindlist</span>(</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>  <span class="fu">lapply</span>(old_data, <span class="st">`</span><span class="at">[[</span><span class="st">`</span>, <span class="st">&quot;coloc_dt&quot;</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>)</span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a>new_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">rbindlist</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>  <span class="fu">lapply</span>(new_data, <span class="st">`</span><span class="at">[[</span><span class="st">`</span>, <span class="st">&quot;coloc_dt&quot;</span>),</span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>)</span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="fu">rm</span>(old_data, new_data, old_files, new_files,dat_path)</span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="fu">table</span>(old_dt<span class="sc">$</span>studyLocusId <span class="sc">%in%</span> new_dt<span class="sc">$</span>studyLocusId,<span class="at">useNA=</span><span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<pre><code>
+ FALSE   TRUE   &lt;NA&gt; 
+    76 126934      0 </code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">table</span>(new_dt<span class="sc">$</span>studyLocusId <span class="sc">%in%</span> old_dt<span class="sc">$</span>studyLocusId,<span class="at">useNA=</span><span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<pre><code>
+ FALSE   TRUE   &lt;NA&gt; 
+   713 126939      0 </code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">table</span>(old_dt<span class="sc">$</span>pheHitId <span class="sc">%in%</span> new_dt<span class="sc">$</span>pheHitId,<span class="at">useNA=</span><span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<pre><code>
+  TRUE   &lt;NA&gt; 
+127010      0 </code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">table</span>(new_dt<span class="sc">$</span>pheHitId <span class="sc">%in%</span> old_dt<span class="sc">$</span>pheHitId,<span class="at">useNA=</span><span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<pre><code>
+  TRUE   &lt;NA&gt; 
+127652      0 </code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>cmp_dt <span class="ot">&lt;-</span> <span class="fu">merge</span>(old_dt[, .(studyLocusId, pheHitId, ppH3, ppH4)],new_dt[, .(studyLocusId, pheHitId, ppH3_inter, ppH4_inter, ppH3_union, ppH4_union)],<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;studyLocusId&quot;</span>, <span class="st">&quot;pheHitId&quot;</span>),<span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">identical</span>(cmp_dt<span class="sc">$</span>ppH3, cmp_dt<span class="sc">$</span>ppH3_union)</span></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">identical</span>(cmp_dt<span class="sc">$</span>ppH4, cmp_dt<span class="sc">$</span>ppH4_union)</span></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">all.equal</span>(cmp_dt<span class="sc">$</span>ppH3, cmp_dt<span class="sc">$</span>ppH3_union)</span></code></pre></div>
+<pre><code>[1] &quot;Mean relative difference: 0.0002384669&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">all.equal</span>(cmp_dt<span class="sc">$</span>ppH4, cmp_dt<span class="sc">$</span>ppH4_union)</span></code></pre></div>
+<pre><code>[1] &quot;Mean relative difference: 0.0004016137&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">summary</span>(cmp_dt<span class="sc">$</span>ppH3<span class="sc">-</span>cmp_dt<span class="sc">$</span>ppH3_union)</span></code></pre></div>
+<pre><code>      Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+-3.984e-01  0.000e+00  0.000e+00 -2.246e-05  0.000e+00  2.502e-01 </code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">summary</span>(cmp_dt<span class="sc">$</span>ppH4<span class="sc">-</span>cmp_dt<span class="sc">$</span>ppH4_union)</span></code></pre></div>
+<pre><code>      Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+-2.502e-01  0.000e+00  0.000e+00  2.246e-05  0.000e+00  3.984e-01 </code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">c</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">which.min</span>(cmp_dt<span class="sc">$</span>ppH3_union <span class="sc">-</span> cmp_dt<span class="sc">$</span>ppH3),</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">which.max</span>(cmp_dt<span class="sc">$</span>ppH4_union <span class="sc">-</span> cmp_dt<span class="sc">$</span>ppH4)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>[1] 71722 71722</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">c</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">which.max</span>(cmp_dt<span class="sc">$</span>ppH3_union <span class="sc">-</span> cmp_dt<span class="sc">$</span>ppH3),</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">which.min</span>(cmp_dt<span class="sc">$</span>ppH4_union <span class="sc">-</span> cmp_dt<span class="sc">$</span>ppH4)</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>[1] 65112 65112</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>cmp_dt[<span class="fu">which.max</span>(cmp_dt<span class="sc">$</span>ppH4_union <span class="sc">-</span> cmp_dt<span class="sc">$</span>ppH4)]</span></code></pre></div>
+<pre><code>Key: &lt;studyLocusId, pheHitId&gt;
+                       studyLocusId                              pheHitId
+                             &lt;char&gt;                                &lt;char&gt;
+1: 90613afc2c90e1a89d0723016bd40a4f sn_l_vol_nln_chr12_123292021_susie_L1
+       ppH3     ppH4 ppH3_inter ppH4_inter ppH3_union ppH4_union
+      &lt;num&gt;    &lt;num&gt;      &lt;num&gt;      &lt;num&gt;      &lt;num&gt;      &lt;num&gt;
+1: 0.496745 0.503255  0.1500427  0.8499573   0.246531   0.753469</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>new_dt[studyLocusId<span class="sc">==</span><span class="st">&quot;90613afc2c90e1a89d0723016bd40a4f&quot;</span> <span class="sc">&amp;</span> pheHitId<span class="sc">==</span><span class="st">&quot;sn_l_vol_nln_chr12_123292021_susie_L1&quot;</span>]</span></code></pre></div>
+<pre><code>                       studyLocusId                              pheHitId
+                             &lt;char&gt;                                &lt;char&gt;
+1: 90613afc2c90e1a89d0723016bd40a4f sn_l_vol_nln_chr12_123292021_susie_L1
+   numUkbwgsVar numOpentargetsVar numSharedVar ppH3_union ppH4_union ppH3_inter
+          &lt;int&gt;             &lt;int&gt;        &lt;int&gt;      &lt;num&gt;      &lt;num&gt;      &lt;num&gt;
+1:          219               159          136   0.246531   0.753469  0.1500427
+   ppH4_inter      studyId studyType                    region
+        &lt;num&gt;       &lt;char&gt;    &lt;char&gt;                    &lt;char&gt;
+1:  0.8499573 GCST90624701      gwas chr12:123423016-123423016
+   finemappingMethod
+              &lt;char&gt;
+1:              PICS
+                                                        confidence sampleSize
+                                                            &lt;char&gt;      &lt;int&gt;
+1: PICS fine-mapped credible set extracted from summary statistics         NA
+   credibleSetlog10BF purityMeanR2 purityMinR2
+                &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
+1:                 NA           NA          NA</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>old_dt[studyLocusId<span class="sc">==</span><span class="st">&quot;90613afc2c90e1a89d0723016bd40a4f&quot;</span> <span class="sc">&amp;</span> pheHitId<span class="sc">==</span><span class="st">&quot;sn_l_vol_nln_chr12_123292021_susie_L1&quot;</span>]</span></code></pre></div>
+<pre><code>                       studyLocusId                              pheHitId
+                             &lt;char&gt;                                &lt;char&gt;
+1: 90613afc2c90e1a89d0723016bd40a4f sn_l_vol_nln_chr12_123292021_susie_L1
+   numUkbwgsVar numOpentargetsVar numSharedVar     ppH3     ppH4      studyId
+          &lt;int&gt;             &lt;int&gt;        &lt;int&gt;    &lt;num&gt;    &lt;num&gt;       &lt;char&gt;
+1:          219                 1            1 0.496745 0.503255 GCST90624701
+   studyType                    region finemappingMethod
+      &lt;char&gt;                    &lt;char&gt;            &lt;char&gt;
+1:      gwas chr12:123423016-123423016              PICS
+                                                        confidence sampleSize
+                                                            &lt;char&gt;      &lt;int&gt;
+1: PICS fine-mapped credible set extracted from summary statistics         NA
+   credibleSetlog10BF purityMeanR2 purityMinR2
+                &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
+1:                 NA           NA          NA</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>cmp_dt[<span class="fu">which.min</span>(cmp_dt<span class="sc">$</span>ppH4_union <span class="sc">-</span> cmp_dt<span class="sc">$</span>ppH4)]</span></code></pre></div>
+<pre><code>Key: &lt;studyLocusId, pheHitId&gt;
+                       studyLocusId                         pheHitId      ppH3
+                             &lt;char&gt;                           &lt;char&gt;     &lt;num&gt;
+1: 8373eb1b582c0abe146549626172bbb0 lc_vol_nln_chr7_2768961_susie_L1 0.1462081
+        ppH4 ppH3_inter ppH4_inter ppH3_union ppH4_union
+       &lt;num&gt;      &lt;num&gt;      &lt;num&gt;      &lt;num&gt;      &lt;num&gt;
+1: 0.8537919  0.0202618  0.9797382  0.5446521  0.4553479</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>new_dt[studyLocusId<span class="sc">==</span><span class="st">&quot;8373eb1b582c0abe146549626172bbb0&quot;</span> <span class="sc">&amp;</span> pheHitId<span class="sc">==</span><span class="st">&quot;lc_vol_nln_chr7_2768961_susie_L1&quot;</span>]</span></code></pre></div>
+<pre><code>                       studyLocusId                         pheHitId
+                             &lt;char&gt;                           &lt;char&gt;
+1: 8373eb1b582c0abe146549626172bbb0 lc_vol_nln_chr7_2768961_susie_L1
+   numUkbwgsVar numOpentargetsVar numSharedVar ppH3_union ppH4_union ppH3_inter
+          &lt;int&gt;             &lt;int&gt;        &lt;int&gt;      &lt;num&gt;      &lt;num&gt;      &lt;num&gt;
+1:           95               106           30  0.5446521  0.4553479  0.0202618
+   ppH4_inter      studyId studyType               region finemappingMethod
+        &lt;num&gt;       &lt;char&gt;    &lt;char&gt;               &lt;char&gt;            &lt;char&gt;
+1:  0.9797382 GCST90624702      gwas chr7:2756248-2756248              PICS
+                                                        confidence sampleSize
+                                                            &lt;char&gt;      &lt;int&gt;
+1: PICS fine-mapped credible set extracted from summary statistics         NA
+   credibleSetlog10BF purityMeanR2 purityMinR2
+                &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
+1:                 NA           NA          NA</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>old_dt[studyLocusId<span class="sc">==</span><span class="st">&quot;8373eb1b582c0abe146549626172bbb0&quot;</span> <span class="sc">&amp;</span> pheHitId<span class="sc">==</span><span class="st">&quot;lc_vol_nln_chr7_2768961_susie_L1&quot;</span>]</span></code></pre></div>
+<pre><code>                       studyLocusId                         pheHitId
+                             &lt;char&gt;                           &lt;char&gt;
+1: 8373eb1b582c0abe146549626172bbb0 lc_vol_nln_chr7_2768961_susie_L1
+   numUkbwgsVar numOpentargetsVar numSharedVar      ppH3      ppH4      studyId
+          &lt;int&gt;             &lt;int&gt;        &lt;int&gt;     &lt;num&gt;     &lt;num&gt;       &lt;char&gt;
+1:           95                 1            1 0.1462081 0.8537919 GCST90624702
+   studyType               region finemappingMethod
+      &lt;char&gt;               &lt;char&gt;            &lt;char&gt;
+1:      gwas chr7:2756248-2756248              PICS
+                                                        confidence sampleSize
+                                                            &lt;char&gt;      &lt;int&gt;
+1: PICS fine-mapped credible set extracted from summary statistics         NA
+   credibleSetlog10BF purityMeanR2 purityMinR2
+                &lt;num&gt;        &lt;num&gt;       &lt;num&gt;
+1:                 NA           NA          NA</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> xzTools<span class="sc">::</span><span class="fu">compare_2dts</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>  <span class="at">new_dt =</span> cmp_dt,</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>  <span class="at">old_dt =</span> cmp_dt,</span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>  <span class="at">cols_to_compare =</span> <span class="fu">c</span>(<span class="st">&quot;ppH3_union&quot;</span> <span class="ot">=</span> <span class="st">&quot;ppH3&quot;</span>, <span class="st">&quot;ppH4_union&quot;</span> <span class="ot">=</span> <span class="st">&quot;ppH4&quot;</span>),</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a>  <span class="at">cols_to_match =</span> <span class="cn">NULL</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a>  <span class="at">get_exact_match =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>  <span class="at">get_correlation =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a>  <span class="at">get_regression =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a>  <span class="at">get_scatterplot =</span> <span class="cn">TRUE</span></span>
+<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>Pearson correlation between ppH3_union in new and ppH3 in old:
+Estimate = 0.99997692, 95% CI = [0.99997667, 0.99997717]
+
+Regression coefficients for ppH3_union (new ~ old):
+                Estimate   Std. Error     t value   Pr(&gt;|t|)
+(Intercept) 1.481782e-05 8.628808e-06     1.71725 0.08593591
+x           1.000025e+00 1.907011e-05 52439.41976 0.00000000
+
+Pearson correlation between ppH4_union in new and ppH4 in old:
+Estimate = 0.99997692, 95% CI = [0.99997667, 0.99997717]
+
+Regression coefficients for ppH4_union (new ~ old):
+                 Estimate   Std. Error      t value    Pr(&gt;|t|)
+(Intercept) -4.024902e-05 1.481773e-05    -2.716273 0.006603031
+x            1.000025e+00 1.907011e-05 52439.419759 0.000000000</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>res<span class="sc">$</span>fig</span></code></pre></div>
+<pre><code>$ppH3_union_vs_ppH3</code></pre>
+<p><img src="figure/compare_coloc_pip_otcs.Rmd/unnamed-chunk-3-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>
+$ppH4_union_vs_ppH4</code></pre>
+<p><img src="figure/compare_coloc_pip_otcs.Rmd/unnamed-chunk-3-2.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">rm</span>(res, cmp_dt,old_dt)</span></code></pre></div>
+</div>
+<div id="comparison-between-union-and-intersection"
+class="section level2">
+<h2>Comparison between union and intersection</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="fu">summary</span>(new_dt<span class="sc">$</span>ppH3_inter <span class="sc">-</span> new_dt<span class="sc">$</span>ppH3_union)</span></code></pre></div>
+<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-0.999976 -0.208355 -0.063333 -0.178477 -0.004926  0.000000 </code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="fu">summary</span>(new_dt<span class="sc">$</span>ppH4_inter <span class="sc">-</span> new_dt<span class="sc">$</span>ppH4_union)</span></code></pre></div>
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.004926 0.063333 0.178477 0.208355 0.999976 </code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> xzTools<span class="sc">::</span><span class="fu">compare_2dts</span>(</span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>  <span class="at">new_dt =</span> new_dt,</span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>  <span class="at">old_dt =</span> new_dt,</span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a>  <span class="at">cols_to_compare =</span> <span class="fu">c</span>(<span class="st">&quot;ppH3_inter&quot;</span> <span class="ot">=</span> <span class="st">&quot;ppH3_union&quot;</span>, <span class="st">&quot;ppH4_inter&quot;</span> <span class="ot">=</span> <span class="st">&quot;ppH4_union&quot;</span>),</span>
+<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a>  <span class="at">cols_to_match =</span> <span class="cn">NULL</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" tabindex="-1"></a>  <span class="at">get_exact_match =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb48-7"><a href="#cb48-7" tabindex="-1"></a>  <span class="at">get_correlation =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb48-8"><a href="#cb48-8" tabindex="-1"></a>  <span class="at">get_regression =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb48-9"><a href="#cb48-9" tabindex="-1"></a>  <span class="at">get_scatterplot =</span> <span class="cn">TRUE</span></span>
+<span id="cb48-10"><a href="#cb48-10" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>Pearson correlation between ppH3_inter in new and ppH3_union in old:
+Estimate = 0.62679220, 95% CI = [0.62345014, 0.63011135]
+
+Regression coefficients for ppH3_inter (new ~ old):
+                Estimate   Std. Error    t value   Pr(&gt;|t|)
+(Intercept) -0.001448413 0.0006513603  -2.223673 0.02617217
+x            0.412797229 0.0014362968 287.403857 0.00000000
+
+Pearson correlation between ppH4_inter in new and ppH4_union in old:
+Estimate = 0.62679220, 95% CI = [0.62345014, 0.63011135]
+
+Regression coefficients for ppH4_inter (new ~ old):
+             Estimate  Std. Error  t value Pr(&gt;|t|)
+(Intercept) 0.5886512 0.001115058 527.9110        0
+x           0.4127972 0.001436297 287.4039        0</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>res<span class="sc">$</span>fig</span></code></pre></div>
+<pre><code>$ppH3_inter_vs_ppH3_union</code></pre>
+<p><img src="figure/compare_coloc_pip_otcs.Rmd/unnamed-chunk-4-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>
+$ppH4_inter_vs_ppH4_union</code></pre>
+<p><img src="figure/compare_coloc_pip_otcs.Rmd/unnamed-chunk-4-2.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="fu">rm</span>(res, new_dt)</span></code></pre></div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>R version 4.5.2 (2025-10-31)
+Platform: aarch64-apple-darwin20
+Running under: macOS Tahoe 26.4.1
+
+Matrix products: default
+BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/Los_Angeles
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] xzTools_0.0.0.9000  data.table_1.18.2.1 ggplot2_4.0.3      
+[4] workflowr_1.7.2    
+
+loaded via a namespace (and not attached):
+ [1] sass_0.4.10        generics_0.1.4     stringi_1.8.7      lattice_0.22-9    
+ [5] digest_0.6.39      magrittr_2.0.5     evaluate_1.0.5     grid_4.5.2        
+ [9] RColorBrewer_1.1-3 fastmap_1.2.0      Matrix_1.7-5       rprojroot_2.1.1   
+[13] jsonlite_2.0.0     processx_3.9.0     whisker_0.4.1      promises_1.5.0    
+[17] httr_1.4.8         mgcv_1.9-4         scales_1.4.0       jquerylib_0.1.4   
+[21] cli_3.6.6          rlang_1.2.0        splines_4.5.2      withr_3.0.2       
+[25] cachem_1.1.0       yaml_2.3.12        otel_0.2.0         tools_4.5.2       
+[29] dplyr_1.2.1        httpuv_1.6.17      vctrs_0.7.3        R6_2.6.1          
+[33] lifecycle_1.0.5    git2r_0.36.2       stringr_1.6.0      fs_2.1.0          
+[37] pkgconfig_2.0.3    callr_3.7.6        pillar_1.11.1      bslib_0.10.0      
+[41] later_1.4.8        gtable_0.3.6       glue_1.8.1         Rcpp_1.1.1        
+[45] xfun_0.57          tibble_3.3.1       tidyselect_1.2.1   rstudioapi_0.18.0 
+[49] knitr_1.51         dichromat_2.0-0.1  farver_2.1.2       htmltools_0.5.9   
+[53] nlme_3.1-169       labeling_0.4.3     rmarkdown_2.31     compiler_4.5.2    
+[57] getPass_0.2-4      S7_0.2.2          </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
