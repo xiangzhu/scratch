@@ -1,0 +1,130 @@
+---
+title: "Compare different runs of COLOC-PIP on the same input data"
+author: "Xiang Zhu, Ph.D."
+date: "First created on 2025-04-04; Last modified on `r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(data.table)
+  library(xzTools)
+})
+
+dat_path <- "/Users/xiangzhu/Documents/1-Projects/brain2gene/coloc/single_20241220_eur"
+```
+
+## Comparison within COLOC-PIP: union vs intersection
+
+```{r}
+old_ls <- readRDS(
+  file = file.path(dat_path, "self_20260104/coloc_pip.rds")
+)
+new_ls <- readRDS(
+  file = file.path(dat_path, "self_20260104/coloc_pip_union_and_inter.rds")
+)
+
+old_dt <- old_ls$coloc_dt
+new_dt <- new_ls$coloc_dt
+rm(old_ls, new_ls)
+
+identical(old_dt[, 1:5], new_dt[, 1:5])
+identical(old_dt$pp_h3, new_dt$pp_h3_union)
+identical(old_dt$pp_h4, new_dt$pp_h4_union)
+
+summary(new_dt$pp_h3_inter - old_dt$pp_h3)
+summary(new_dt$pp_h4_inter - old_dt$pp_h4)
+
+c(
+  which.min(new_dt$pp_h3_inter - old_dt$pp_h3),
+  which.max(new_dt$pp_h4_inter - old_dt$pp_h4)
+)
+
+old_dt[which.max(new_dt$pp_h4_inter - old_dt$pp_h4), ]
+new_dt[which.max(new_dt$pp_h4_inter - old_dt$pp_h4), ]
+
+res <- xzTools::compare_2dts(
+  new_dt = new_dt,
+  old_dt = old_dt,
+  cols_to_compare = c("pp_h3_inter" = "pp_h3", "pp_h4_inter" = "pp_h4"),
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+res$fig
+rm(res)
+```
+
+# Comparison between COLOC-PIP and COLOC-ABF
+
+```{r}
+ref_ls <- readRDS(file = file.path(dat_path, "self_20260104/coloc_susie.rds"))
+ref_dt <- data.table::as.data.table(ref_ls$coloc_dt)[, `:=`(
+  cs1 = paste0(sub("\\.rds$", "", res1), "_L", idx1),
+  cs2 = paste0(sub("\\.rds$", "", res2), "_L", idx2)
+)]
+rm(ref_ls)
+
+ref_dt[
+  res1 == "sn_l_swi_50th_chr6_34728253_susie.rds" &
+    res2 == "sn_r_swi_50th_chr6_34708903_susie.rds",
+  -c(2:3)
+]
+new_dt[which.max(new_dt$pp_h4_inter - old_dt$pp_h4), ]
+```
+
+```{r}
+all_dt <- merge(ref_dt, new_dt, by = c("cs1", "cs2"), all = TRUE)
+
+all_dt[
+  res1 == "lc_qsm_50th_chr11_130418902_susie.rds" &
+    res2 == "lc_vol_nln_chr11_130412183_susie.rds",
+  -c(2:3)
+]
+
+source('/Users/xiangzhu/GitHub/brain2gene/susie/parse_results.R')
+
+cs1_dt <- out_dt[file == "lc_vol_nln_chr11_130412183_susie.rds"]
+cs2_dt <- out_dt[file == "lc_qsm_50th_chr11_130418902_susie.rds"]
+intersect(cs1_dt$var, cs2_dt$var)
+rm(cs1_dt, cs2_dt, out_dt, set_dt, all_dt)
+```
+
+```{r}
+cmp_dt <- merge(ref_dt, new_dt, by = c("cs1", "cs2"), all = FALSE)
+rm(ref_dt, new_dt, old_dt)
+
+res <- xzTools::compare_2dts(
+  new_dt = cmp_dt,
+  old_dt = cmp_dt,
+  cols_to_compare = c("pp_h3_union" = "PP.H3.abf", "pp_h4_union" = "PP.H4.abf"),
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+res$fig
+rm(res)
+
+res <- xzTools::compare_2dts(
+  new_dt = cmp_dt,
+  old_dt = cmp_dt,
+  cols_to_compare = c("pp_h3_inter" = "PP.H3.abf", "pp_h4_inter" = "PP.H4.abf"),
+  cols_to_match = NULL,
+  get_exact_match = FALSE,
+  get_correlation = TRUE,
+  get_regression = TRUE,
+  get_scatterplot = TRUE
+)
+
+res$fig
+rm(res, cmp_dt)
+```
